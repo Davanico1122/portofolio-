@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portofolio Saya</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+    :root {
+      --primary-color: #4f46e5;
+      --secondary-color: #3b82f6;
+      --bg-color: #f9fafb;
+      --text-color: #111827;
+      --accent-color: #e0e7ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgb(79 70 229 / 0.3);
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 600;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+    header p {
+      margin-top: 0.5rem;
+      font-weight: 300;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    h2.section-title {
+      font-weight: 600;
+      font-size: 2rem;
+      border-bottom: 3px solid var(--primary-color);
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding-bottom: 0.3rem;
+      color: var(--primary-color);
+    }
+
+    /* About Me */
+    #about p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin-top: 1rem;
+    }
+
+    /* Project Grid */
+    #projects .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgb(79 70 229 / 0.15);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgb(79 70 229 / 0.3);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      user-select: none;
+    }
+    .project-content {
+      padding: 1rem 1.2rem 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .project-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+    .project-description {
+      flex-grow: 1;
+      font-size: 1rem;
+      color: #4b5563;
+    }
+    .project-link {
+      margin-top: 1rem;
+      text-decoration: none;
+      color: var(--secondary-color);
+      font-weight: 600;
+      transition: color 0.3s ease;
+      align-self: flex-start;
+    }
+    .project-link:hover {
+      color: var(--primary-color);
+    }
+
+    /* Contact Form */
+    #contact form {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 500px;
+      margin: 0 auto;
+      box-shadow: 0 4px 12px rgb(79 70 229 / 0.15);
+    }
+    #contact label {
+      display: block;
+      font-weight: 600;
+      margin: 1rem 0 0.4rem 0;
+      color: var(--primary-color);
+    }
+    #contact input,
+    #contact textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid var(--accent-color);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      transition: border-color 0.3s ease;
+      resize: vertical;
+    }
+    #contact input:focus,
+    #contact textarea:focus {
+      border-color: var(--secondary-color);
+      outline: none;
+    }
+    #contact button {
+      margin-top: 1.5rem;
+      background: var(--primary-color);
+      border: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #contact button:hover {
+      background: var(--secondary-color);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: #6b7280;
+      font-size: 0.9rem;
+      border-top: 1px solid #e5e7eb;
+      margin-top: 3rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Nama Kamu</h1>
+  <p>Web Developer | Designer | Freelancer</p>
+</header>
+<main>
+  <section id="about">
+    <h2 class="section-title">Tentang Saya</h2>
+    <p>
+      Halo! Saya adalah seorang web developer dan designer yang passionate dalam membuat website modern, 
+      cepat, dan menarik dengan pengalaman lebih dari 5 tahun. Saya suka menciptakan solusi kreatif 
+      yang membantu bisnis tumbuh dan tampil online dengan profesional.
+    </p>
+  </section>
+  <section id="projects">
+    <h2 class="section-title">Proyek Saya</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=600&q=80" alt="Proyek 1" class="project-image" />
+        <div class="project-content">
+          <div>
+            <h3 class="project-title">Website E-Commerce</h3>
+            <p class="project-description">
+              Website toko online lengkap dengan fitur pembayaran dan manajemen produk.
+            </p>
+          </div>
+          <a href="https://github.com/vercel/commerce" target="_blank" class="project-link" rel="noopener noreferrer">Lihat Proyek</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Proyek 2" class="project-image" />
+        <div class="project-content">
+          <div>
+            <h3 class="project-title">Portfolio Pribadi</h3>
+            <p class="project-description">
+              Website portfolio personal dengan desain minimalis dan interaktif.
+            </p>
+          </div>
+          <a href="https://html5up.net/phantom" target="_blank" class="project-link" rel="noopener noreferrer">Lihat Proyek</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80" alt="Proyek 3" class="project-image" />
+        <div class="project-content">
+          <div>
+            <h3 class="project-title">Aplikasi Mobile</h3>
+            <p class="project-description">
+              Prototype aplikasi mobile dengan UI/UX modern dan fungsional.
+            </p>
+          </div>
+          <a href="https://dribbble.com/shots/14148914-Mobile-app-design" target="_blank" class="project-link" rel="noopener noreferrer">Lihat Proyek</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Kontak Saya</h2>
+    <form id="contact-form" action="javascript:void(0);">
+      <label for="name">Nama</label>
+      <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required />
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required />
+      <label for="message">Pesan</label>
+      <textarea id="message" name="message" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+  </section>
+</main>
+<footer>
+  &copy; 2024 Nama Kamu. Semua hak cipta dilindungi.
+</footer>
+
+<script>
+  // Simple form submission simulation
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = this.name.value.trim();
+    const email = this.email.value.trim();
+    const message = this.message.value.trim();
+
+    if(name && email && message){
+      alert('Terima kasih, ' + name + '! Pesan Anda sudah terkirim.');
+      this.reset();
+    } else {
+      alert('Mohon lengkapi semua kolom form terlebih dahulu.');
+    }
+  });
+</script>
+</body>
+</html>
