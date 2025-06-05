@@ -1,19 +1,20 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portofolio - Neumorphism style</title>
+  <title>Portofolio Saya - Tema Gelap Elegan</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
     :root {
-      --bg-color: #e0e0e0;
-      --primary-color: #a3b1c6;
-      --shadow-light: rgba(255, 255, 255, 0.7);
-      --shadow-dark: rgba(174, 174, 192, 0.4);
-      --text-color: #333;
-      --accent-color: #5a67d8;
+      --bg-color: #121212;
+      --primary-color: #8a4fff;
+      --shadow-light: rgba(255, 255, 255, 0.1);
+      --shadow-dark: rgba(0, 0, 0, 0.7);
+      --text-color: #e0e0e0;
+      --accent-color: #a17aff;
       --border-radius: 16px;
       --transition-time: 0.5s;
       --font-family: 'Poppins', sans-serif;
@@ -35,12 +36,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      /* Added padding to prevent glow clipping */
+      padding: 20px;
     }
 
     header {
       background-color: var(--bg-color);
-      box-shadow: 6px 6px 12px var(--shadow-dark),
-                  -6px -6px 12px var(--shadow-light);
+      box-shadow:
+        8px 8px 20px var(--shadow-dark),
+        -8px -8px 20px var(--shadow-light);
       padding: 2rem 1.5rem 2.8rem;
       text-align: center;
       border-radius: 0 0 var(--border-radius) var(--border-radius);
@@ -49,6 +53,7 @@
       width: 100%;
       max-width: var(--header-max-width);
       margin-bottom: -4rem;
+      z-index: 10;
     }
 
     header h1 {
@@ -74,14 +79,16 @@
       background-color: var(--bg-color);
       border-radius: var(--border-radius);
       padding: 2.5rem 2rem 4rem;
-      box-shadow: inset 6px 6px 12px var(--shadow-dark),
-                  inset -6px -6px 12px var(--shadow-light);
+      box-shadow:
+        inset 8px 8px 20px var(--shadow-dark),
+        inset -8px -8px 20px var(--shadow-light),
+        0 0 30px var(--accent-color);
       position: relative;
-      z-index: 1;
+      z-index: 5;
       min-height: 600px;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      overflow: visible; /* changed from hidden to visible to prevent glow clipping */
       width: 100%;
     }
 
@@ -137,22 +144,25 @@
     .project-card {
       background-color: var(--bg-color);
       border-radius: var(--border-radius);
-      box-shadow: 8px 8px 15px var(--shadow-dark),
-                  -8px -8px 15px var(--shadow-light);
+      box-shadow:
+        8px 8px 20px var(--shadow-dark),
+        -8px -8px 20px var(--shadow-light);
       cursor: pointer;
       display: flex;
       flex-direction: column;
       overflow: hidden;
       transition: box-shadow var(--transition-time), transform var(--transition-time);
       position: relative;
+      z-index: 2;
     }
     .project-card:hover,
     .project-card:focus-within {
-      box-shadow: inset 4px 4px 8px var(--shadow-dark),
-                  inset -4px -4px 8px var(--shadow-light);
+      box-shadow:
+        inset 4px 4px 8px var(--shadow-dark),
+        inset -4px -4px 8px var(--shadow-light);
       transform: translateY(-5px);
       outline: none;
-      z-index: 5;
+      z-index: 10;
     }
 
     .project-image {
@@ -201,8 +211,9 @@
       font-weight: 600;
       font-size: 1rem;
       color: var(--accent-color);
-      box-shadow: 5px 5px 10px var(--shadow-dark),
-                  -5px -5px 10px var(--shadow-light);
+      box-shadow:
+        5px 5px 10px var(--shadow-dark),
+        -5px -5px 10px var(--shadow-light);
       cursor: pointer;
       transition: box-shadow var(--transition-time), color var(--transition-time);
       align-self: flex-start;
@@ -211,96 +222,64 @@
     .project-link:hover, .project-back-button:hover,
     .project-link:focus, .project-back-button:focus {
       color: white;
-      box-shadow: inset 5px 5px 10px var(--shadow-dark),
-                  inset -5px -5px 10px var(--shadow-light);
+      box-shadow:
+        inset 5px 5px 10px var(--shadow-dark),
+        inset -5px -5px 10px var(--shadow-light);
       outline:none;
     }
 
-    /* Contact Form */
-    #contact form {
+    /* Contact Social Section */
+    #contact-social {
       max-width: 550px;
       margin: 0 auto;
-      background-color: var(--bg-color);
-      padding: 2.5rem 3rem;
-      border-radius: var(--border-radius);
-      box-shadow: 8px 8px 15px var(--shadow-dark),
-                  -8px -8px 15px var(--shadow-light);
-      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      user-select: none;
+      padding-top: 1rem;
     }
-    #contact label {
-      display: block;
-      font-weight: 600;
-      margin: 1.3rem 0 0.5rem 0;
+    #contact-social a {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      text-decoration: none;
       color: var(--accent-color);
-      user-select: none;
-    }
-    #contact input,
-    #contact textarea {
-      width: 100%;
-      padding: 1rem 1.2rem;
       border-radius: var(--border-radius);
-      border: none;
+      padding: 0.8rem 1.5rem;
       background-color: var(--bg-color);
-      box-shadow: inset 5px 5px 10px var(--shadow-dark),
-                  inset -5px -5px 10px var(--shadow-light);
-      font-family: var(--font-family);
-      font-size: 1rem;
-      color: var(--text-color);
-      resize: vertical;
-      transition: box-shadow var(--transition-time);
+      box-shadow:
+        8px 8px 20px var(--shadow-dark),
+        -8px -8px 20px var(--shadow-light);
+      transition: box-shadow var(--transition-time), color var(--transition-time);
+      font-weight: 600;
+      font-size: 1.1rem;
     }
-    #contact input::placeholder,
-    #contact textarea::placeholder {
-      color: var(--primary-color);
-      opacity: 0.7;
-      font-style: italic;
-    }
-    #contact input:focus,
-    #contact textarea:focus {
-      outline: none;
-      box-shadow: inset 3px 3px 7px var(--shadow-dark),
-                  inset -3px -3px 7px var(--shadow-light);
-      background-color: #f0f0f0;
-      color: #333;
-    }
-    #contact button {
-      margin-top: 3rem;
-      width: 100%;
-      font-weight: 700;
-      font-size: 1.15rem;
-      border: none;
-      padding: 1.2rem 0;
-      border-radius: var(--border-radius);
-      background-color: var(--accent-color);
+    #contact-social a:hover,
+    #contact-social a:focus {
       color: white;
-      cursor: pointer;
-      box-shadow: 5px 5px 15px #8a94f0;
-      transition: background-color var(--transition-time), box-shadow var(--transition-time);
-      user-select: none;
-    }
-    #contact button:hover,
-    #contact button:focus {
-      background-color: #6366f1;
-      box-shadow: 0 0 25px #6366f1;
+      box-shadow:
+        inset 5px 5px 15px var(--shadow-dark),
+        inset -5px -5px 15px var(--shadow-light);
       outline: none;
     }
-
-    footer {
-      padding: 1rem;
-      text-align: center;
-      user-select: none;
-      font-size: 1rem;
-      color: var(--text-color);
-      background-color: var(--bg-color);
-      border-top: 1px solid var(--primary-color);
-      margin-top: auto;
+    #contact-social svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--accent-color);
+      transition: fill var(--transition-time);
+    }
+    #contact-social a:hover svg,
+    #contact-social a:focus svg {
+      fill: white;
     }
 
     /* Responsive */
     @media (max-width: 600px) {
       main {
-        padding: 2rem 1rem;
+        padding: 2rem 1rem 3rem;
         margin: -3rem 1rem 2rem;
+        overflow: visible;
       }
       header {
         margin-bottom: -3rem;
@@ -314,15 +293,19 @@
       .project-title {
         font-size: 1.2rem;
       }
-      #contact form {
-        padding: 2rem 1.5rem;
+      #contact-social {
+        gap: 1.5rem;
+      }
+      #contact-social a {
+        font-size: 1rem;
+        padding: 0.7rem 1.2rem;
       }
     }
   </style>
 </head>
 <body>
 <header>
-  <h1>Davanico Ady Nugroho</h1>
+  <h1>Nama Kamu</h1>
   <p>Web Developer | Designer | Freelancer</p>
 </header>
 <main>
@@ -331,15 +314,16 @@
     <section id="about">
       <h2 class="section-title">Tentang Saya</h2>
       <p>
-       Halo! Saya sedang belajar menjadi Web Developer dan Designer.
-       Saya antusias mempelajari cara membuat website modern, cepat, dan menarik. Saya senang mencoba hal baru dan terus belajar untuk menciptakan solusi kreatif di dunia web.
+        Halo! Saya adalah seorang web developer dan designer yang passionate dalam membuat website modern, 
+        cepat, dan menarik dengan pengalaman lebih dari 5 tahun. Saya suka menciptakan solusi kreatif 
+        yang membantu bisnis tumbuh dan tampil online dengan profesional.
       </p>
     </section>
     <section id="projects">
       <h2 class="section-title">Proyek Saya</h2>
       <div class="project-grid">
         <div class="project-card" data-project="ecommerce" tabindex="0" role="button" aria-label="Lihat detail proyek Website E-Commerce">
-          <img src="images/ai-streetwear.png" alt="Proyek Website E-Commerce" class="project-image" />
+          <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=600&q=80" alt="Proyek Website E-Commerce" class="project-image" />
           <div class="project-content">
             <div>
               <h3 class="project-title">Website E-Commerce</h3>
@@ -374,20 +358,30 @@
             <button class="project-link" aria-label="Lihat detail Aplikasi Mobile">Lihat Proyek</button>
           </div>
         </div>
+        <div class="project-card" data-project="blog" tabindex="0" role="button" aria-label="Lihat detail proyek Blog Pribadi">
+          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" alt="Proyek Blog Pribadi" class="project-image" />
+          <div class="project-content">
+            <div>
+              <h3 class="project-title">Blog Pribadi</h3>
+              <p class="project-description">
+                Blog pribadi dengan konten kreatif dan pengelolaan yang mudah.
+              </p>
+            </div>
+            <button class="project-link" aria-label="Lihat detail Blog Pribadi">Lihat Proyek</button>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="contact">
-      <h2 class="section-title">Kontak Saya</h2>
-      <form id="contact-form" action="javascript:void(0);" aria-label="Formulir kontak">
-        <label for="name">Nama</label>
-        <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required autocomplete="name" />
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required autocomplete="email" />
-        <label for="message">Pesan</label>
-        <textarea id="message" name="message" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
-        <button type="submit" aria-label="Kirim pesan">Kirim</button>
-      </form>
+    <section id="contact-social" aria-label="Media Sosial">
+      <a href="https://instagram.com/davanico1122_" target="_blank" rel="noopener noreferrer" aria-label="Instagram davanico1122_">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 2A3.75 3.75 0 004 7.75v8.5A3.75 3.75 0 007.75 20h8.5a3.75 3.75 0 003.75-3.75v-8.5A3.75 3.75 0 0016.25 4h-8.5zm8.25 1.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/></svg>
+        @davanico1122_
+      </a>
+      <a href="https://github.com/Davanico1122" target="_blank" rel="noopener noreferrer" aria-label="GitHub Davanico1122">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.68c-2.73.6-3.3-1.3-3.3-1.3-.44-1.12-1.08-1.42-1.08-1.42-.88-.6.07-.59.07-.59 1 .07 1.53 1.03 1.53 1.03.87 1.5 2.3 1.07 2.86.82.09-.64.33-1.07.6-1.32-2.18-.24-4.47-1.08-4.47-4.8 0-1.06.37-1.93.98-2.61-.1-.25-.43-1.28.1-2.67 0 0 .8-.26 2.6.99a9.06 9.06 0 012.37-.32c.8.01 1.6.11 2.37.32 1.8-1.25 2.6-.99 2.6-.99.53 1.39.19 2.42.09 2.67.61.68.98 1.55.98 2.61 0 3.72-2.3 4.56-4.48 4.8.34.3.65.9.65 1.82v2.7c0 .26.18.58.69.48A10 10 0 0012 2z" clip-rule="evenodd" /></svg>
+        Davanico1122
+      </a>
     </section>
   </section>
 
@@ -398,7 +392,7 @@
   </section>
 </main>
 <footer>
-  &copy; 2025 Davanico A.N. Semua hak cipta dilindungi.
+  &copy; 2024 Nama Kamu. Semua hak cipta dilindungi.
 </footer>
 
 <script>
@@ -423,6 +417,13 @@
       description: `Prototype aplikasi mobile dengan UI/UX modern dan fungsional, dirancang untuk kemudahan penggunaan dan estetika tinggi.`,
       url: "https://dribbble.com/shots/14148914-Mobile-app-design",
       urlText: "Lihat Desain di Dribbble"
+    },
+    blog: {
+      title: "Blog Pribadi",
+      image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=900&q=80",
+      description: `Blog pribadi dengan konten kreatif dan pengelolaan yang mudah untuk membagikan ide serta pengalaman.`,
+      url: "https://github.com/Davanico1122",
+      urlText: "Lihat GitHub Repo Blog"
     }
   };
 
@@ -525,21 +526,8 @@
       backToHome();
     }
   });
-
-  // Contact form simulation
-  document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = this.name.value.trim();
-    const email = this.email.value.trim();
-    const message = this.message.value.trim();
-
-    if(name && email && message){
-      alert('Terima kasih, ' + name + '! Pesan Anda sudah terkirim.');
-      this.reset();
-    } else {
-      alert('Mohon lengkapi semua kolom form terlebih dahulu.');
-    }
-  });
 </script>
 </body>
-  </html>
+</html>
+
+```
