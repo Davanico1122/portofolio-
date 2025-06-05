@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portofolio</title>
+  <title>Portofolio Saya - Tema Gelap Elegan & Halus</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
@@ -14,7 +14,7 @@
       --shadow-dark: rgba(0, 0, 0, 0.85);
       --text-color: #e0e0e0;
       --accent-color: #a17aff;
-      --border-radius: 24px; /* smoother larger radius */
+      --border-radius: 20px;
       --transition-time: 0.4s;
       --font-family: 'Poppins', sans-serif;
       --header-max-width: 700px;
@@ -36,42 +36,37 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px; /* For glow spacing */
+      padding: 20px;
     }
 
     header {
       background-color: var(--bg-color);
       box-shadow:
-        12px 12px 30px var(--shadow-dark),
-        -12px -12px 30px var(--shadow-light);
-      padding: 1.5rem 2rem 2.5rem;
+        8px 8px 16px var(--shadow-dark),
+        -8px -8px 16px var(--shadow-light);
+      padding: 1.5rem 2rem 2rem;
       text-align: center;
       border-radius: 0 0 var(--border-radius) var(--border-radius);
       user-select: none;
       position: relative;
       width: 100%;
       max-width: var(--header-max-width);
-      margin-bottom: -5rem;
+      margin-bottom: -4rem;
       z-index: 20;
-      transition: box-shadow var(--transition-time) ease;
-    }
-    header:hover, header:focus-within {
-      box-shadow:
-        16px 16px 45px var(--glow-color),
-        -16px -16px 45px var(--glow-color);
+      transition: box-shadow var(--transition-time);
     }
 
     header h1 {
       margin: 0;
       font-weight: 600;
-      font-size: 3rem;
-      letter-spacing: 0.1em;
+      font-size: 2.8rem;
+      letter-spacing: 0.08em;
       color: var(--accent-color);
-      text-shadow: 0 0 12px var(--accent-color);
-      transition: text-shadow var(--transition-time) ease;
+      text-shadow: 0 0 10px var(--accent-color);
+      transition: text-shadow var(--transition-time);
     }
     header:hover h1, header:focus-within h1 {
-      text-shadow: 0 0 20px var(--glow-color);
+      text-shadow: 0 0 14px var(--glow-color);
     }
 
     header p {
@@ -80,7 +75,7 @@
       font-size: 1.15rem;
       color: var(--text-color);
       opacity: 0.9;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
     }
 
     main {
@@ -90,23 +85,16 @@
       border-radius: var(--border-radius);
       padding: 3rem 3rem 4rem;
       box-shadow:
-        inset 12px 12px 30px var(--shadow-dark),
-        inset -12px -12px 30px var(--shadow-light),
+        inset 8px 8px 16px var(--shadow-dark),
+        inset -8px -8px 16px var(--shadow-light),
         0 0 30px var(--glow-color);
       position: relative;
       z-index: 10;
       min-height: 600px;
       display: flex;
       flex-direction: column;
-      overflow: visible; /* allow glow */
+      overflow: visible;
       width: 100%;
-      transition: box-shadow var(--transition-time) ease;
-    }
-    main:hover, main:focus-within {
-      box-shadow:
-        inset 16px 16px 40px var(--glow-color),
-        inset -16px -16px 40px var(--glow-color),
-        0 0 50px var(--glow-color);
     }
 
     /* Fade animation for page transitions */
@@ -164,8 +152,8 @@
       background-color: var(--bg-color);
       border-radius: var(--border-radius);
       box-shadow:
-        12px 12px 28px var(--shadow-dark),
-        -12px -12px 28px var(--shadow-light);
+        6px 6px 18px var(--shadow-dark),
+        -6px -6px 18px var(--shadow-light);
       cursor: pointer;
       display: flex;
       flex-direction: column;
@@ -231,13 +219,13 @@
       background-color: var(--bg-color);
       border-radius: 60px;
       border: none;
-      padding: 0.7rem 2.2rem;
+      padding: 0.7rem 2rem;
       font-weight: 700;
       font-size: 1.1rem;
       color: var(--accent-color);
       box-shadow:
-        6px 6px 15px var(--shadow-dark),
-        -6px -6px 15px var(--shadow-light);
+        4px 4px 12px var(--shadow-dark),
+        -4px -4px 12px var(--shadow-light);
       cursor: pointer;
       transition: box-shadow var(--transition-time), color var(--transition-time);
       align-self: flex-start;
@@ -250,9 +238,9 @@
     .project-link:focus, .project-back-button:focus {
       color: #fff;
       box-shadow:
-        inset 6px 6px 15px var(--shadow-dark),
-        inset -6px -6px 15px var(--shadow-light),
-        0 0 25px var(--glow-color);
+        inset 5px 5px 15px var(--shadow-dark),
+        inset -5px -5px 15px var(--shadow-light),
+        0 0 18px var(--glow-color);
       outline:none;
     }
 
@@ -262,7 +250,7 @@
       margin: 0 auto;
       display: flex;
       justify-content: center;
-      gap: 3.5rem;
+      gap: 3rem;
       flex-wrap: wrap;
       user-select: none;
       padding-top: 1rem;
@@ -277,11 +265,11 @@
       padding: 1rem 2rem;
       background-color: var(--bg-color);
       box-shadow:
-        12px 12px 24px var(--shadow-dark),
-        -12px -12px 24px var(--shadow-light);
-      transition: box-shadow 0.4s ease, color 0.4s ease;
+        8px 8px 20px var(--shadow-dark),
+        -8px -8px 20px var(--shadow-light);
+      transition: box-shadow 0.35s ease, color 0.35s ease;
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       letter-spacing: 0.05em;
       user-select: none;
     }
@@ -289,16 +277,16 @@
     #contact-social a:focus {
       color: white;
       box-shadow:
-        inset 8px 8px 20px var(--shadow-dark),
-        inset -8px -8px 20px var(--shadow-light),
-        0 0 40px var(--glow-color);
+        inset 6px 6px 15px var(--shadow-dark),
+        inset -6px -6px 15px var(--shadow-light),
+        0 0 32px var(--glow-color);
       outline: none;
     }
     #contact-social svg {
       width: 28px;
       height: 28px;
       fill: var(--accent-color);
-      transition: fill 0.4s ease;
+      transition: fill 0.35s ease;
     }
     #contact-social a:hover svg,
     #contact-social a:focus svg {
@@ -323,13 +311,13 @@
         font-size: 1.1rem;
       }
       .project-title {
-        font-size: 1.25rem;
+        font-size: 1.22rem;
       }
       #contact-social {
         gap: 1.5rem;
       }
       #contact-social a {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         padding: 0.8rem 1.3rem;
       }
     }
@@ -337,8 +325,8 @@
 </head>
 <body>
 <header>
-  <h1>DAVANICO</h1>
-  <p>Exploring Web & Graphic Design | SMK DKV Student</p>
+  <h1>Nama Kamu</h1>
+  <p>Web Developer | Designer | Freelancer</p>
 </header>
 <main>
   <!-- Halaman Utama -->
@@ -346,7 +334,9 @@
     <section id="about">
       <h2 class="section-title">Tentang Saya</h2>
       <p>
-        Halo! Saya adalah seorang web developer dan designer pemula yang antusias dalam membuat website modern, cepat, dan menarik. Saya senang belajar dan menciptakan solusi kreatif dalam setiap proyek.
+        Halo! Saya adalah seorang web developer dan designer yang passionate dalam membuat website modern, 
+        cepat, dan menarik dengan pengalaman lebih dari 5 tahun. Saya suka menciptakan solusi kreatif 
+        yang membantu bisnis tumbuh dan tampil online dengan profesional.
       </p>
     </section>
     <section id="projects">
@@ -422,7 +412,9 @@
   </section>
 </main>
 <footer>
-&copy; 2024 Davanico. Terima kasih sudah mampir!
+  &copy; 2024 Nama Kamu. Semua hak cipta dilindungi.
+</footer>
+
 <script>
   const projectsData = {
     ecommerce: {
@@ -466,7 +458,7 @@
       element.classList.add('fade-exit-active');
       setTimeout(() => {
         resolve();
-      }, 500);
+      }, 400);
     });
   }
 
@@ -476,7 +468,7 @@
       element.classList.add('fade-enter-active');
       setTimeout(() => {
         resolve();
-      }, 500);
+      }, 400);
     });
   }
 
@@ -488,8 +480,8 @@
 
     detailContent.innerHTML = `
       <h2 class="section-title">${project.title}</h2>
-      <img src="${project.image}" alt="${project.title}" style="width: 100%; border-radius: var(--border-radius); margin-bottom: 1rem; box-shadow: 8px 8px 15px rgba(90,103,216,0.5);" />
-      <p style="font-size: 1.1rem; color: var(--text-color); line-height: 1.6; letter-spacing: 0.02em;">${project.description}</p>
+      <img src="${project.image}" alt="${project.title}" style="width: 100%; border-radius: var(--border-radius); margin-bottom: 1rem; box-shadow: 8px 8px 15px rgba(90,103,216,0.4);" />
+      <p style="font-size: 1.1rem; color: var(--text-color); line-height: 1.6; letter-spacing: 0.02em; text-shadow: 0 1px 3px rgba(0,0,0,0.6);">${project.description}</p>
       <button class="project-link" onclick="window.open('${project.url}', '_blank')" aria-label="Buka halaman proyek">Buka Proyek</button>
     `;
 
@@ -557,4 +549,3 @@
 </script>
 </body>
 </html>
-
