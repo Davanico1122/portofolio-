@@ -1,19 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portofolio Saya</title>
+  <title>Portofolio Saya - Neumorphism dengan Transisi</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
     :root {
-      --primary-color: #4f46e5;
-      --secondary-color: #3b82f6;
-      --bg-color: #f9fafb;
-      --text-color: #111827;
-      --accent-color: #e0e7ff;
+      --bg-color: #e0e0e0;
+      --primary-color: #a3b1c6;
+      --shadow-light: rgba(255, 255, 255, 0.7);
+      --shadow-dark: rgba(174, 174, 192, 0.4);
+      --text-color: #333;
+      --accent-color: #5a67d8;
+      --border-radius: 16px;
+      --transition-time: 0.5s;
+      --font-family: 'Poppins', sans-serif;
+      --header-max-width: 700px;
     }
 
     * {
@@ -22,253 +26,376 @@
 
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-family);
       background-color: var(--bg-color);
       color: var(--text-color);
-      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     header {
-      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-      color: white;
-      padding: 2rem 1rem;
+      background-color: var(--bg-color);
+      box-shadow: 6px 6px 12px var(--shadow-dark),
+                  -6px -6px 12px var(--shadow-light);
+      padding: 2rem 1.5rem 2.8rem;
       text-align: center;
-      box-shadow: 0 4px 8px rgb(79 70 229 / 0.3);
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+      user-select: none;
+      position: relative;
+      width: 100%;
+      max-width: var(--header-max-width);
+      margin-bottom: -4rem;
     }
+
     header h1 {
       margin: 0;
       font-weight: 600;
-      font-size: 2.5rem;
-      letter-spacing: 1px;
+      font-size: 2.8rem;
+      letter-spacing: 0.07em;
+      color: var(--accent-color);
     }
+
     header p {
-      margin-top: 0.5rem;
+      margin-top: 0.3rem;
       font-weight: 300;
-      font-size: 1.2rem;
-      opacity: 0.9;
+      font-size: 1.15rem;
+      color: var(--text-color);
+      opacity: 0.8;
+      letter-spacing: 0.03em;
     }
 
     main {
+      flex-grow: 1;
       max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 1rem;
+      background-color: var(--bg-color);
+      border-radius: var(--border-radius);
+      padding: 2.5rem 2rem 4rem;
+      box-shadow: inset 6px 6px 12px var(--shadow-dark),
+                  inset -6px -6px 12px var(--shadow-light);
+      position: relative;
+      z-index: 1;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    /* Fade animation for page transitions */
+    .fade-enter {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .fade-enter-active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity var(--transition-time) ease, transform var(--transition-time) ease;
+    }
+    .fade-exit {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-exit-active {
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity var(--transition-time) ease, transform var(--transition-time) ease;
     }
 
     section {
       margin-bottom: 4rem;
+      flex-grow: 1;
+      overflow-y: auto;
     }
 
     h2.section-title {
       font-weight: 600;
-      font-size: 2rem;
-      border-bottom: 3px solid var(--primary-color);
-      display: inline-block;
-      margin-bottom: 1rem;
-      padding-bottom: 0.3rem;
-      color: var(--primary-color);
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent-color);
+      user-select: none;
     }
 
     /* About Me */
     #about p {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       max-width: 700px;
-      margin-top: 1rem;
+      line-height: 1.6;
+      color: var(--text-color);
     }
 
     /* Project Grid */
     #projects .project-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 1.5rem;
+      gap: 2rem;
     }
 
     .project-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgb(79 70 229 / 0.15);
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: var(--bg-color);
+      border-radius: var(--border-radius);
+      box-shadow: 8px 8px 15px var(--shadow-dark),
+                  -8px -8px 15px var(--shadow-light);
       cursor: pointer;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
+      transition: box-shadow var(--transition-time), transform var(--transition-time);
+      position: relative;
     }
-    .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 20px rgb(79 70 229 / 0.3);
+    .project-card:hover,
+    .project-card:focus-within {
+      box-shadow: inset 4px 4px 8px var(--shadow-dark),
+                  inset -4px -4px 8px var(--shadow-light);
+      transform: translateY(-5px);
+      outline: none;
+      z-index: 5;
     }
 
     .project-image {
       width: 100%;
-      height: 160px;
+      height: 170px;
       object-fit: cover;
+      border-top-left-radius: var(--border-radius);
+      border-top-right-radius: var(--border-radius);
       user-select: none;
+      transition: transform var(--transition-time);
     }
+    .project-card:hover .project-image,
+    .project-card:focus-within .project-image {
+      transform: scale(1.05);
+    }
+
     .project-content {
-      padding: 1rem 1.2rem 1.5rem;
+      padding: 1.2rem 1.6rem 1.8rem;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
+
     .project-title {
       font-weight: 600;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--primary-color);
+      font-size: 1.3rem;
+      color: var(--accent-color);
+      margin-bottom: 0.6rem;
+      user-select: none;
     }
+
     .project-description {
-      flex-grow: 1;
+      color: var(--text-color);
       font-size: 1rem;
-      color: #4b5563;
+      line-height: 1.5;
+      flex-grow: 1;
     }
-    .project-link {
+
+    .project-link, .project-back-button {
       margin-top: 1rem;
-      text-decoration: none;
-      color: var(--secondary-color);
+      background-color: var(--bg-color);
+      border-radius: 50px;
+      border: none;
+      padding: 0.55rem 1.8rem;
       font-weight: 600;
-      transition: color 0.3s ease;
+      font-size: 1rem;
+      color: var(--accent-color);
+      box-shadow: 5px 5px 10px var(--shadow-dark),
+                  -5px -5px 10px var(--shadow-light);
+      cursor: pointer;
+      transition: box-shadow var(--transition-time), color var(--transition-time);
       align-self: flex-start;
+      user-select: none;
     }
-    .project-link:hover {
-      color: var(--primary-color);
+    .project-link:hover, .project-back-button:hover,
+    .project-link:focus, .project-back-button:focus {
+      color: white;
+      box-shadow: inset 5px 5px 10px var(--shadow-dark),
+                  inset -5px -5px 10px var(--shadow-light);
+      outline:none;
     }
 
     /* Contact Form */
     #contact form {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      max-width: 500px;
+      max-width: 550px;
       margin: 0 auto;
-      box-shadow: 0 4px 12px rgb(79 70 229 / 0.15);
+      background-color: var(--bg-color);
+      padding: 2.5rem 3rem;
+      border-radius: var(--border-radius);
+      box-shadow: 8px 8px 15px var(--shadow-dark),
+                  -8px -8px 15px var(--shadow-light);
+      color: var(--text-color);
     }
     #contact label {
       display: block;
       font-weight: 600;
-      margin: 1rem 0 0.4rem 0;
-      color: var(--primary-color);
+      margin: 1.3rem 0 0.5rem 0;
+      color: var(--accent-color);
+      user-select: none;
     }
     #contact input,
     #contact textarea {
       width: 100%;
-      padding: 0.8rem;
-      border: 2px solid var(--accent-color);
-      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      border-radius: var(--border-radius);
+      border: none;
+      background-color: var(--bg-color);
+      box-shadow: inset 5px 5px 10px var(--shadow-dark),
+                  inset -5px -5px 10px var(--shadow-light);
+      font-family: var(--font-family);
       font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
-      transition: border-color 0.3s ease;
+      color: var(--text-color);
       resize: vertical;
+      transition: box-shadow var(--transition-time);
+    }
+    #contact input::placeholder,
+    #contact textarea::placeholder {
+      color: var(--primary-color);
+      opacity: 0.7;
+      font-style: italic;
     }
     #contact input:focus,
     #contact textarea:focus {
-      border-color: var(--secondary-color);
       outline: none;
+      box-shadow: inset 3px 3px 7px var(--shadow-dark),
+                  inset -3px -3px 7px var(--shadow-light);
+      background-color: #f0f0f0;
+      color: #333;
     }
     #contact button {
-      margin-top: 1.5rem;
-      background: var(--primary-color);
+      margin-top: 3rem;
+      width: 100%;
+      font-weight: 700;
+      font-size: 1.15rem;
       border: none;
+      padding: 1.2rem 0;
+      border-radius: var(--border-radius);
+      background-color: var(--accent-color);
       color: white;
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 0.8rem 1.5rem;
-      border-radius: 10px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      box-shadow: 5px 5px 15px #8a94f0;
+      transition: background-color var(--transition-time), box-shadow var(--transition-time);
+      user-select: none;
     }
-    #contact button:hover {
-      background: var(--secondary-color);
+    #contact button:hover,
+    #contact button:focus {
+      background-color: #6366f1;
+      box-shadow: 0 0 25px #6366f1;
+      outline: none;
     }
 
     footer {
-      text-align: center;
       padding: 1rem;
-      color: #6b7280;
-      font-size: 0.9rem;
-      border-top: 1px solid #e5e7eb;
-      margin-top: 3rem;
+      text-align: center;
+      user-select: none;
+      font-size: 1rem;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      border-top: 1px solid var(--primary-color);
+      margin-top: auto;
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 480px) {
+    /* Responsive */
+    @media (max-width: 600px) {
+      main {
+        padding: 2rem 1rem;
+        margin: -3rem 1rem 2rem;
+      }
+      header {
+        margin-bottom: -3rem;
+      }
       header h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
       header p {
-        font-size: 1rem;
+        font-size: 1.1rem;
+      }
+      .project-title {
+        font-size: 1.2rem;
+      }
+      #contact form {
+        padding: 2rem 1.5rem;
       }
     }
   </style>
 </head>
 <body>
 <header>
-  <h1>Davanico Ady Nugroho</h1>
+  <h1>Nama Kamu</h1>
   <p>Web Developer | Designer | Freelancer</p>
 </header>
 <main>
-  <section id="about">
-    <h2 class="section-title">Tentang Saya</h2>
-    <p>
-      Halo! Saya adalah seorang web developer dan designer yang passionate dalam membuat website modern, 
-      cepat, dan menarik. Saya suka menciptakan solusi kreatif 
-      yang membantu bisnis tumbuh dan tampil online dengan profesional.
-    </p>
-  </section>
-  <section id="projects">
-    <h2 class="section-title">Proyek Saya</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=600&q=80" alt="Proyek 1" class="project-image" />
-        <div class="project-content">
-          <div>
-            <h3 class="project-title">Website E-Commerce</h3>
-            <p class="project-description">
-              Website toko online lengkap dengan fitur pembayaran dan manajemen produk.
-            </p>
+  <!-- Halaman Utama -->
+  <section id="home-page" class="fade-enter-active">
+    <section id="about">
+      <h2 class="section-title">Tentang Saya</h2>
+      <p>
+        Halo! Saya adalah seorang web developer dan designer yang passionate dalam membuat website modern, 
+        cepat, dan menarik dengan pengalaman lebih dari 5 tahun. Saya suka menciptakan solusi kreatif 
+        yang membantu bisnis tumbuh dan tampil online dengan profesional.
+      </p>
+    </section>
+    <section id="projects">
+      <h2 class="section-title">Proyek Saya</h2>
+      <div class="project-grid">
+        <div class="project-card" data-project="ecommerce" tabindex="0" role="button" aria-label="Lihat detail proyek Website E-Commerce">
+          <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=600&q=80" alt="Proyek Website E-Commerce" class="project-image" />
+          <div class="project-content">
+            <div>
+              <h3 class="project-title">Website E-Commerce</h3>
+              <p class="project-description">
+                Website toko online lengkap dengan fitur pembayaran dan manajemen produk.
+              </p>
+            </div>
+            <button class="project-link" aria-label="Lihat detail Website E-Commerce">Lihat Proyek</button>
           </div>
-          <a href="https://github.com/vercel/commerce" target="_blank" class="project-link" rel="noopener noreferrer">Lihat Proyek</a>
+        </div>
+        <div class="project-card" data-project="portfolio" tabindex="0" role="button" aria-label="Lihat detail proyek Portfolio Pribadi">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Proyek Portfolio Pribadi" class="project-image" />
+          <div class="project-content">
+            <div>
+              <h3 class="project-title">Portfolio Pribadi</h3>
+              <p class="project-description">
+                Website portfolio personal dengan desain minimalis dan interaktif.
+              </p>
+            </div>
+            <button class="project-link" aria-label="Lihat detail Portfolio Pribadi">Lihat Proyek</button>
+          </div>
+        </div>
+        <div class="project-card" data-project="mobileapp" tabindex="0" role="button" aria-label="Lihat detail proyek Aplikasi Mobile">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80" alt="Proyek Aplikasi Mobile" class="project-image" />
+          <div class="project-content">
+            <div>
+              <h3 class="project-title">Aplikasi Mobile</h3>
+              <p class="project-description">
+                Prototype aplikasi mobile dengan UI/UX modern dan fungsional.
+              </p>
+            </div>
+            <button class="project-link" aria-label="Lihat detail Aplikasi Mobile">Lihat Proyek</button>
+          </div>
         </div>
       </div>
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Proyek 2" class="project-image" />
-        <div class="project-content">
-          <div>
-            <h3 class="project-title">Portfolio Pribadi</h3>
-            <p class="project-description">
-              Website portfolio personal dengan desain minimalis dan interaktif.
-            </p>
-          </div>
-          <a href="https://html5up.net/phantom" target="_blank" class="project-link" rel="noopener noreferrer">Lihat Proyek</a>
-        </div>
-      </div>
-      <div class="project-card">
-        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80" alt="Proyek 3" class="project-image" />
-        <div class="project-content">
-          <div>
-            <h3 class="project-title">Aplikasi Mobile</h3>
-            <p class="project-description">
-              Prototype aplikasi mobile dengan UI/UX modern dan fungsional.
-            </p>
-          </div>
-          <a href="https://dribbble.com/shots/14148914-Mobile-app-design" target="_blank" class="project-link" rel="noopener noreferrer">Lihat Proyek</a>
-        </div>
-      </div>
-    </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Kontak Saya</h2>
+      <form id="contact-form" action="javascript:void(0);" aria-label="Formulir kontak">
+        <label for="name">Nama</label>
+        <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required autocomplete="name" />
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required autocomplete="email" />
+        <label for="message">Pesan</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
+        <button type="submit" aria-label="Kirim pesan">Kirim</button>
+      </form>
+    </section>
   </section>
 
-  <section id="contact">
-    <h2 class="section-title">Kontak Saya</h2>
-    <form id="contact-form" action="javascript:void(0);">
-      <label for="name">Nama</label>
-      <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required />
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required />
-      <label for="message">Pesan</label>
-      <textarea id="message" name="message" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
-      <button type="submit">Kirim</button>
-    </form>
+  <!-- Halaman Detail Proyek (disembunyikan default) -->
+  <section id="project-detail-page" style="display:none;">
+    <button class="project-back-button" aria-label="Kembali ke halaman utama">← Kembali</button>
+    <div id="project-detail-content" tabindex="0" class="fade-enter-active"></div>
   </section>
 </main>
 <footer>
@@ -276,7 +403,131 @@
 </footer>
 
 <script>
-  // Simple form submission simulation
+  const projectsData = {
+    ecommerce: {
+      title: "Website E-Commerce",
+      image: "https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=900&q=80",
+      description: `Website toko online lengkap dengan fitur pembayaran, manajemen produk, dan pengalaman pengguna yang mudah dan menarik. Dibangun menggunakan teknologi modern untuk performa optimal.`,
+      url: "https://github.com/vercel/commerce",
+      urlText: "Lihat Proyek di GitHub"
+    },
+    portfolio: {
+      title: "Portfolio Pribadi",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80",
+      description: `Website portfolio personal dengan desain minimalis dan interaktif, menampilkan karya dan pengalaman saya secara profesional.`,
+      url: "https://html5up.net/phantom",
+      urlText: "Lihat Template Demo"
+    },
+    mobileapp: {
+      title: "Aplikasi Mobile",
+      image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=900&q=80",
+      description: `Prototype aplikasi mobile dengan UI/UX modern dan fungsional, dirancang untuk kemudahan penggunaan dan estetika tinggi.`,
+      url: "https://dribbble.com/shots/14148914-Mobile-app-design",
+      urlText: "Lihat Desain di Dribbble"
+    }
+  };
+
+  const homePage = document.getElementById('home-page');
+  const detailPage = document.getElementById('project-detail-page');
+  const detailContent = document.getElementById('project-detail-content');
+  const backButton = detailPage.querySelector('.project-back-button');
+
+  function fadeOut(element) {
+    return new Promise(resolve => {
+      element.classList.remove('fade-enter-active');
+      element.classList.add('fade-exit-active');
+      setTimeout(() => {
+        resolve();
+      }, 500);
+    });
+  }
+
+  function fadeIn(element) {
+    return new Promise(resolve => {
+      element.classList.remove('fade-exit-active');
+      element.classList.add('fade-enter-active');
+      setTimeout(() => {
+        resolve();
+      }, 500);
+    });
+  }
+
+  async function showProjectDetail(projectId) {
+    const project = projectsData[projectId];
+    if (!project) return;
+
+    await fadeOut(homePage);
+
+    detailContent.innerHTML = `
+      <h2 class="section-title">${project.title}</h2>
+      <img src="${project.image}" alt="${project.title}" style="width: 100%; border-radius: var(--border-radius); margin-bottom: 1rem; box-shadow: 8px 8px 15px rgba(90,103,216,0.5);" />
+      <p style="font-size: 1.1rem; color: var(--text-color); line-height: 1.6; letter-spacing: 0.02em;">${project.description}</p>
+      <button class="project-link" onclick="window.open('${project.url}', '_blank')" aria-label="Buka halaman proyek">Buka Proyek</button>
+    `;
+
+    homePage.style.display = 'none';
+    detailPage.style.display = 'block';
+    await fadeIn(detailContent);
+
+    window.history.pushState({project: projectId}, '', `#${projectId}`);
+    detailContent.focus();
+  }
+
+  async function backToHome() {
+    await fadeOut(detailContent);
+    detailPage.style.display = 'none';
+    homePage.style.display = 'block';
+    await fadeIn(homePage);
+    window.history.pushState({}, '', '/');
+  }
+
+  document.querySelectorAll('.project-link').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const projectCard = e.target.closest('.project-card');
+      const projectId = projectCard.getAttribute('data-project');
+      showProjectDetail(projectId);
+      e.preventDefault();
+    });
+  });
+
+  backButton.addEventListener('click', () => {
+    backToHome();
+  });
+
+  // Keyboard accessibility: allow Enter/Space to open projects
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const projectId = card.getAttribute('data-project');
+        showProjectDetail(projectId);
+        e.preventDefault();
+      }
+    });
+  });
+
+  // Load based on URL hash for refresh/bookmark
+  window.addEventListener('load', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && projectsData[hash]) {
+      showProjectDetail(hash);
+    }
+  });
+
+  // Handle back-forward navigation
+  window.addEventListener('popstate', (event) => {
+    if (window.location.hash) {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && projectsData[hash]) {
+        showProjectDetail(hash);
+      } else {
+        backToHome();
+      }
+    } else {
+      backToHome();
+    }
+  });
+
+  // Contact form simulation
   document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const name = this.name.value.trim();
@@ -292,4 +543,4 @@
   });
 </script>
 </body>
-</html>
+  </html>
