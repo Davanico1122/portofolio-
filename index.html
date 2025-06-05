@@ -1,24 +1,24 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portofolio Saya</title>
+  <title>Portofolio Saya - Tema Gelap Elegan & Halus</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
     :root {
       --bg-color: #121212;
       --primary-color: #8a4fff;
-      --shadow-light: rgba(255, 255, 255, 0.1);
-      --shadow-dark: rgba(0, 0, 0, 0.7);
+      --shadow-light: rgba(255, 255, 255, 0.12);
+      --shadow-dark: rgba(0, 0, 0, 0.85);
       --text-color: #e0e0e0;
       --accent-color: #a17aff;
-      --border-radius: 16px;
-      --transition-time: 0.5s;
+      --border-radius: 24px; /* smoother larger radius */
+      --transition-time: 0.4s;
       --font-family: 'Poppins', sans-serif;
       --header-max-width: 700px;
+      --glow-color: #9366ffcc;
     }
 
     * {
@@ -36,32 +36,42 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* Added padding to prevent glow clipping */
-      padding: 20px;
+      padding: 20px; /* For glow spacing */
     }
 
     header {
       background-color: var(--bg-color);
       box-shadow:
-        8px 8px 20px var(--shadow-dark),
-        -8px -8px 20px var(--shadow-light);
-      padding: 2rem 1.5rem 2.8rem;
+        12px 12px 30px var(--shadow-dark),
+        -12px -12px 30px var(--shadow-light);
+      padding: 1.5rem 2rem 2.5rem;
       text-align: center;
       border-radius: 0 0 var(--border-radius) var(--border-radius);
       user-select: none;
       position: relative;
       width: 100%;
       max-width: var(--header-max-width);
-      margin-bottom: -4rem;
-      z-index: 10;
+      margin-bottom: -5rem;
+      z-index: 20;
+      transition: box-shadow var(--transition-time) ease;
+    }
+    header:hover, header:focus-within {
+      box-shadow:
+        16px 16px 45px var(--glow-color),
+        -16px -16px 45px var(--glow-color);
     }
 
     header h1 {
       margin: 0;
       font-weight: 600;
-      font-size: 2.8rem;
-      letter-spacing: 0.07em;
+      font-size: 3rem;
+      letter-spacing: 0.1em;
       color: var(--accent-color);
+      text-shadow: 0 0 12px var(--accent-color);
+      transition: text-shadow var(--transition-time) ease;
+    }
+    header:hover h1, header:focus-within h1 {
+      text-shadow: 0 0 20px var(--glow-color);
     }
 
     header p {
@@ -69,8 +79,8 @@
       font-weight: 300;
       font-size: 1.15rem;
       color: var(--text-color);
-      opacity: 0.8;
-      letter-spacing: 0.03em;
+      opacity: 0.9;
+      letter-spacing: 0.04em;
     }
 
     main {
@@ -78,18 +88,25 @@
       max-width: 900px;
       background-color: var(--bg-color);
       border-radius: var(--border-radius);
-      padding: 2.5rem 2rem 4rem;
+      padding: 3rem 3rem 4rem;
       box-shadow:
-        inset 8px 8px 20px var(--shadow-dark),
-        inset -8px -8px 20px var(--shadow-light),
-        0 0 30px var(--accent-color);
+        inset 12px 12px 30px var(--shadow-dark),
+        inset -12px -12px 30px var(--shadow-light),
+        0 0 30px var(--glow-color);
       position: relative;
-      z-index: 5;
+      z-index: 10;
       min-height: 600px;
       display: flex;
       flex-direction: column;
-      overflow: visible; /* changed from hidden to visible to prevent glow clipping */
+      overflow: visible; /* allow glow */
       width: 100%;
+      transition: box-shadow var(--transition-time) ease;
+    }
+    main:hover, main:focus-within {
+      box-shadow:
+        inset 16px 16px 40px var(--glow-color),
+        inset -16px -16px 40px var(--glow-color),
+        0 0 50px var(--glow-color);
     }
 
     /* Fade animation for page transitions */
@@ -119,68 +136,73 @@
     }
 
     h2.section-title {
-      font-weight: 600;
-      font-size: 2.2rem;
+      font-weight: 700;
+      font-size: 2.4rem;
       margin-bottom: 1.5rem;
       color: var(--accent-color);
       user-select: none;
+      text-shadow: 0 0 14px var(--accent-color);
     }
 
     /* About Me */
     #about p {
-      font-size: 1.15rem;
-      max-width: 700px;
-      line-height: 1.6;
+      font-size: 1.2rem;
+      max-width: 720px;
+      line-height: 1.7;
       color: var(--text-color);
+      text-shadow: 0 0 4px #000000b3;
     }
 
     /* Project Grid */
     #projects .project-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 2rem;
+      gap: 2.5rem;
     }
 
     .project-card {
       background-color: var(--bg-color);
       border-radius: var(--border-radius);
       box-shadow:
-        8px 8px 20px var(--shadow-dark),
-        -8px -8px 20px var(--shadow-light);
+        12px 12px 28px var(--shadow-dark),
+        -12px -12px 28px var(--shadow-light);
       cursor: pointer;
       display: flex;
       flex-direction: column;
       overflow: hidden;
       transition: box-shadow var(--transition-time), transform var(--transition-time);
       position: relative;
-      z-index: 2;
+      z-index: 5;
     }
     .project-card:hover,
     .project-card:focus-within {
       box-shadow:
-        inset 4px 4px 8px var(--shadow-dark),
-        inset -4px -4px 8px var(--shadow-light);
-      transform: translateY(-5px);
+        inset 5px 5px 10px var(--glow-color),
+        inset -5px -5px 10px var(--glow-color),
+        0 0 25px var(--glow-color);
+      transform: translateY(-8px) scale(1.03);
       outline: none;
-      z-index: 10;
+      z-index: 15;
     }
 
     .project-image {
       width: 100%;
-      height: 170px;
+      height: 180px;
       object-fit: cover;
       border-top-left-radius: var(--border-radius);
       border-top-right-radius: var(--border-radius);
       user-select: none;
       transition: transform var(--transition-time);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
     .project-card:hover .project-image,
     .project-card:focus-within .project-image {
-      transform: scale(1.05);
+      transform: scale(1.08);
+      box-shadow: 0 8px 20px var(--glow-color);
     }
 
     .project-content {
-      padding: 1.2rem 1.6rem 1.8rem;
+      padding: 1.5rem 2rem 2.2rem;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -188,43 +210,49 @@
     }
 
     .project-title {
-      font-weight: 600;
-      font-size: 1.3rem;
+      font-weight: 700;
+      font-size: 1.45rem;
       color: var(--accent-color);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.7rem;
       user-select: none;
+      text-shadow: 0 0 8px var(--accent-color);
     }
 
     .project-description {
       color: var(--text-color);
-      font-size: 1rem;
-      line-height: 1.5;
+      font-size: 1.05rem;
+      line-height: 1.55;
       flex-grow: 1;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
     }
 
     .project-link, .project-back-button {
-      margin-top: 1rem;
+      margin-top: 1.3rem;
       background-color: var(--bg-color);
-      border-radius: 50px;
+      border-radius: 60px;
       border: none;
-      padding: 0.55rem 1.8rem;
-      font-weight: 600;
-      font-size: 1rem;
+      padding: 0.7rem 2.2rem;
+      font-weight: 700;
+      font-size: 1.1rem;
       color: var(--accent-color);
       box-shadow:
-        5px 5px 10px var(--shadow-dark),
-        -5px -5px 10px var(--shadow-light);
+        6px 6px 15px var(--shadow-dark),
+        -6px -6px 15px var(--shadow-light);
       cursor: pointer;
       transition: box-shadow var(--transition-time), color var(--transition-time);
       align-self: flex-start;
       user-select: none;
+      letter-spacing: 0.04em;
+      text-align: center;
+      text-shadow: 0 0 5px var(--accent-color);
     }
     .project-link:hover, .project-back-button:hover,
     .project-link:focus, .project-back-button:focus {
-      color: white;
+      color: #fff;
       box-shadow:
-        inset 5px 5px 10px var(--shadow-dark),
-        inset -5px -5px 10px var(--shadow-light);
+        inset 6px 6px 15px var(--shadow-dark),
+        inset -6px -6px 15px var(--shadow-light),
+        0 0 25px var(--glow-color);
       outline:none;
     }
 
@@ -234,7 +262,7 @@
       margin: 0 auto;
       display: flex;
       justify-content: center;
-      gap: 3rem;
+      gap: 3.5rem;
       flex-wrap: wrap;
       user-select: none;
       padding-top: 1rem;
@@ -242,32 +270,35 @@
     #contact-social a {
       display: flex;
       align-items: center;
-      gap: 0.9rem;
+      gap: 1rem;
       text-decoration: none;
       color: var(--accent-color);
       border-radius: var(--border-radius);
-      padding: 0.8rem 1.5rem;
+      padding: 1rem 2rem;
       background-color: var(--bg-color);
       box-shadow:
-        8px 8px 20px var(--shadow-dark),
-        -8px -8px 20px var(--shadow-light);
-      transition: box-shadow var(--transition-time), color var(--transition-time);
-      font-weight: 600;
-      font-size: 1.1rem;
+        12px 12px 24px var(--shadow-dark),
+        -12px -12px 24px var(--shadow-light);
+      transition: box-shadow 0.4s ease, color 0.4s ease;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      user-select: none;
     }
     #contact-social a:hover,
     #contact-social a:focus {
       color: white;
       box-shadow:
-        inset 5px 5px 15px var(--shadow-dark),
-        inset -5px -5px 15px var(--shadow-light);
+        inset 8px 8px 20px var(--shadow-dark),
+        inset -8px -8px 20px var(--shadow-light),
+        0 0 40px var(--glow-color);
       outline: none;
     }
     #contact-social svg {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       fill: var(--accent-color);
-      transition: fill var(--transition-time);
+      transition: fill 0.4s ease;
     }
     #contact-social a:hover svg,
     #contact-social a:focus svg {
@@ -278,11 +309,12 @@
     @media (max-width: 600px) {
       main {
         padding: 2rem 1rem 3rem;
-        margin: -3rem 1rem 2rem;
+        margin: -4rem 1rem 2rem;
         overflow: visible;
       }
       header {
         margin-bottom: -3rem;
+        padding: 1.5rem 1rem 2rem;
       }
       header h1 {
         font-size: 2.5rem;
@@ -291,22 +323,22 @@
         font-size: 1.1rem;
       }
       .project-title {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
       }
       #contact-social {
         gap: 1.5rem;
       }
       #contact-social a {
-        font-size: 1rem;
-        padding: 0.7rem 1.2rem;
+        font-size: 1.1rem;
+        padding: 0.8rem 1.3rem;
       }
     }
   </style>
 </head>
 <body>
 <header>
-  <h1>Davanico Ady Nugroho</h1>
-  p>Exploring Web & Graphic Design | SMK DKV Student</p>
+  <h1>Nama Kamu</h1>
+  <p>Web Developer | Designer | Freelancer</p>
 </header>
 <main>
   <!-- Halaman Utama -->
@@ -314,8 +346,9 @@
     <section id="about">
       <h2 class="section-title">Tentang Saya</h2>
       <p>
-        Halo! Saya adalah seorang web developer dan designer pemula yang     antusias dalam membuat website modern, cepat, dan menarik. Saya senang      belajar dan menciptakan solusi kreatif dalam setiap proyek.
-
+        Halo! Saya adalah seorang web developer dan designer yang passionate dalam membuat website modern, 
+        cepat, dan menarik dengan pengalaman lebih dari 5 tahun. Saya suka menciptakan solusi kreatif 
+        yang membantu bisnis tumbuh dan tampil online dengan profesional.
       </p>
     </section>
     <section id="projects">
@@ -529,4 +562,3 @@
 </body>
 </html>
 
-```
