@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<body data-theme="light">
+
+    <nav>
+        <div class="logo" aria-label="Portfolio Logo"> MyPortfolio</div>
+
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle-Menu" aria-expanded="false"
+            aria-controls="navbarMenu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <ul id="navbarMenu" role="menu">
+            <li role="none"><a href="#home" role="menuitem" class="active">Home</a></li>
+            <li role="none"><a href="#about" role="menuitem">About</a></li>
+            <li role="none"><a href="#project" role="menuitem">Project</a></li>
+            <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
+        </ul>
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark/Light theme"
+            title="Toggle Dark/Light Theme">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+    </nav>
+
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1>Hi, I'm <span>Yashika</span></h1>
+            <h2 class="typing-text">Full Stack Developer | UI Designer | Learner</h2>
+            <p>I build complete web solutions from front-end to back-end, creating mordern , responsive, and scalable
+                applications. Skilled in HTML, CSS, JAVASCRIPT, Node.js, databases, and passionate about clean,
+                efficient code
+                and beautiful design.
+            </p>
+            <div class="home--buttons">
+                <a href="#projects" class="btn"><i class="fa-solid fa-briefcase"></i> View Projects</a>
+                <a href="#contact" class="btn secondary"><i class="fa-solid fa-envelope"></i> Contact Me</a>
+            </div>
+        </div>
+
+        <div class="home-image">
+            <img src="images/person.png" alt="Developer-image">
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-container">
+            <h2>About Me</h2>
+            <p>
+                I'm <strong>Yashika</strong>, a passionate Full Stack Developer and UI Designer.
+                With a strong foundation in both front-end and back-end technologies, I create seamless, user-friendly
+                web
+                applications.
+                I love transforming ideas into reality with clean code, efficient architechture, and beautiful design.
+            </p>
+            <p>
+                I have experience working with technologies like HTML, CSS, JavaScript, Node.js, Express, MongoDB, and
+                React.
+                Contantly learning and envolving, I aim to deliver modern, responsive, and scalable website.
+            </p>
+            <p>
+                When I'm not coding, I enjoy exploring UI/UX trends, constributing to open source, and enhancing my
+                skills
+                through hands-on projects.
+            </p>
+        </div>
+    </section>
+
+    <section class="projects" id="project">
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <i class="fa-solid fa-cart-shopping project-icon"></i>
+                <h3>E-Commerce Website</h3>
+                <p>Aresponsive shopping website with product listing, filtering, cart functionality and dark/light theme
+                    support,</p>
+                <a href="#" class="project-link">View Demo <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="project-card">
+                <i class="fa-solid fa-diagram-project project-icon"></i>
+                <h3>Blog Platform</h3>
+                <p>Full-stack blog applications with authentication, CRUD operations, and markdown editor using Node.js
+                    and MongoDB.</p>
+                <a href="#" class="project-link">View Demo <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="project-card">
+                <i class="fa-solid fa-chart-line project-icon"></i>
+                <h3>Portfolio Analytics</h3>
+                <p>Personal portfolio website with live visitor tracking and chart visualization using Chart.js.</p>
+                <a href="#" class="project-link">View Demo <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Me</h2>
+        <p>If you have a project in mind, want to collaborate, or just say hello - feel free to message me!</p>
+
+        <form class="contact-form">
+            <div class="form-group">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+            </div>
+            <textarea placeholder="Your Message" rows="6" required></textarea>
+            <button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i>Send Message</button>
+        </form>
+
+        <div class="contact-social">
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
