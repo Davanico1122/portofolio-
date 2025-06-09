@@ -14,10 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Start of Theme Handling ---
 
+    // Fungsi untuk mengatur tema dan memperbarui ikon
     const setTheme = (theme) => {
         body.setAttribute('data-theme', theme);
         localStorage.setItem('selectedTheme', theme);
 
+        // Perbarui ikon berdasarkan tema yang baru
         if (theme === 'dark') {
             themeIcon.classList.remove('fa-moon');
             themeIcon.classList.add('fa-sun');
@@ -27,13 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Muat tema yang tersimpan saat halaman dimuat
     const savedTheme = localStorage.getItem('selectedTheme');
     if (savedTheme) {
         setTheme(savedTheme);
     } else {
+        // Tema default jika tidak ada preferensi yang tersimpan (misal: 'light')
         setTheme('light');
     }
 
+    // Toggle tema saat tombol diklik
     themeToggleBtn.addEventListener('click', () => {
         const currentTheme = body.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
@@ -45,29 +50,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Start of Hamburger Menu Handling ---
 
+    // Periksa apakah elemen hamburger dan navMenu ada sebelum menambahkan event listener
     if (hamburgerBtn && navbarMenu) {
         const hamburgerIcon = hamburgerBtn.querySelector('i');
 
         hamburgerBtn.addEventListener('click', () => {
             const expanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
             hamburgerBtn.setAttribute('aria-expanded', !expanded);
-            navbarMenu.classList.toggle('active');
+            navbarMenu.classList.toggle('active'); // Ganti 'open' menjadi 'active' agar konsisten dengan CSS yang biasa
 
+            // Toggle ikon hamburger
             if (navbarMenu.classList.contains('active')) {
                 hamburgerIcon.classList.remove('fa-bars');
-                hamburgerIcon.classList.add('fa-xmark');
+                hamburgerIcon.classList.add('fa-xmark'); // Ikon silang saat menu terbuka
             } else {
                 hamburgerIcon.classList.remove('fa-xmark');
-                hamburgerIcon.classList.add('fa-bars');
+                hamburgerIcon.classList.add('fa-bars'); // Ikon baris saat menu tertutup
             }
         });
 
+        // Tutup menu mobile saat link diklik
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if (navbarMenu.classList.contains('active')) {
                     navbarMenu.classList.remove('active');
                     hamburgerBtn.setAttribute('aria-expanded', 'false');
-                    hamburgerIcon.classList.remove('fa-xmark');
+                    hamburgerIcon.classList.remove('fa-xmark'); // Pastikan ikon kembali ke baris
                     hamburgerIcon.classList.add('fa-bars');
                 }
             });
@@ -109,15 +117,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 typingSpeed = 75; // Lebih cepat saat menghapus
             }
 
+            // Kondisi untuk beralih antara mengetik dan menghapus
             if (!isDeleting && charIndex === currentPhrase.length) {
                 // Selesai mengetik, tunggu sebentar lalu mulai menghapus
-                typingSpeed = 1500; // Jeda sebelum menghapus
+                typingSpeed = 1500; // Jeda sebelum menghapus (1.5 detik)
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 // Selesai menghapus, pindah ke frase berikutnya
                 isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typingSpeed = 500; // Jeda sebelum mulai mengetik frase baru
+                phraseIndex = (phraseIndex + 1) % phrases.length; // Loop kembali ke awal array
+                typingSpeed = 500; // Jeda sebelum mulai mengetik frase baru (0.5 detik)
             }
 
             setTimeout(typeEffect, typingSpeed);
