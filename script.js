@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburgerBtn.addEventListener('click', () => {
             const expanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
             hamburgerBtn.setAttribute('aria-expanded', !expanded);
-            navbarMenu.classList.toggle('active'); // Ganti 'open' menjadi 'active' agar konsisten dengan CSS yang biasa
+            navbarMenu.classList.toggle('active'); // Menggunakan 'active' agar konsisten dengan CSS
 
             // Toggle ikon hamburger
             if (navbarMenu.classList.contains('active')) {
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "Beginner in Web Development",
             "Passionate About UI Design",
             "Always Learning",
-            "Exploring New Technologies" // Anda bisa menambahkan frase lain di sini
+            "Exploring New Technologies"
         ];
         let phraseIndex = 0;
         let charIndex = 0;
@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 typingSpeed = 500; // Jeda sebelum mulai mengetik frase baru (0.5 detik)
             }
 
+            // Panggil fungsi ini lagi setelah jeda
             setTimeout(typeEffect, typingSpeed);
         }
 
