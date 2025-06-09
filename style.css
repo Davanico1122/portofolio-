@@ -15,7 +15,7 @@
   --shadow-dark: rgba(255, 255, 255, 0.1);
 
   /* Variabel tambahan untuk border di mode gelap agar tidak terlalu kontras */
-  --border-color: rgba(255, 255, 255, 0.1); /* Default untuk mode gelap */
+  --border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Mengubah :root menjadi body untuk data-theme agar konsisten dengan JS */
@@ -46,7 +46,7 @@ body {
   font-family: var(--font-family);
   background: var(--background);
   color: var(--text-color);
-  transition: background var(--transition-speed), color var(--transition-speed); /* Tambah transisi untuk body */
+  transition: background var(--transition-speed), color var(--transition-speed);
 }
 
 /* ==============header-section==========> */
@@ -64,7 +64,7 @@ nav {
   box-shadow: 0 4px 30px var(--shadow-color);
   z-index: 1000;
   border-radius: 0 0 20px 20px;
-  transition: background var(--transition-speed), box-shadow var(--transition-speed); /* Tambah transisi box-shadow */
+  transition: background var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .logo {
@@ -123,7 +123,7 @@ nav ul li a.active {
   color: var(--text-color);
   padding: 8px;
   border-radius: 50%;
-  transition: background 0.3s ease, color 0.3s ease; /* Tambah transisi warna */
+  transition: background 0.3s ease, color 0.3s ease;
 }
 .theme-toggle:hover {
   background: var(--accent-color);
@@ -138,7 +138,7 @@ nav ul li a.active {
   color: var(--text-color);
   cursor: pointer;
   z-index: 1100;
-  transition: color 0.3s ease; /* Tambah transisi warna */
+  transition: color 0.3s ease;
 }
 .hamburger:hover {
   color: var(--accent-color);
@@ -178,23 +178,29 @@ nav ul li a.active {
   font-weight: 500;
   margin: 0.5rem 1.5rem;
   color: var(--accent-color);
-  /* Perbaiki: Hapus animation property dari sini dan masukkan ke @keyframes if needed for infinite loop */
   white-space: nowrap;
   overflow: hidden;
   border-right: 2px solid var(--accent-color);
   width: 0; /* Awalnya 0 untuk efek ketik */
 }
-/* Memperbaiki typing effect */
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
+/* Anda dapat menghapus kelas .typing-text.active di CSS ini
+   jika Anda benar-benar mengontrol animasi sepenuhnya dari JS.
+   Namun, jika Anda ingin menggunakan CSS untuk kursor berkedip
+   atau transisi lebar, Anda bisa biarkan ini, tapi pastikan JS
+   menambahkan/menghapus kelas 'active' jika itu yang Anda inginkan.
+   Dengan JS typing effect yang kita buat, width diatur per karakter,
+   bukan lewat keyframes 'typing'. Keyframes 'blink-caret' masih bisa dipakai.
+*/
+/* Memperbaiki typing effect. Class 'active' tidak lagi diperlukan jika JS mengontrol penuh */
+/* Jika Anda ingin kursor berkedip tetap ada, biarkan @keyframes blink-caret dan
+   pastikan .typing-text memiliki border-right dan overflow: hidden */
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: var(--accent-color); }
 }
-.typing-text.active { /* Tambahkan kelas ini dengan JS saat typing effect aktif */
-  animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+.typing-text { /* Modifikasi ini agar kursor berkedip secara otomatis */
+    /* Properti typing-text sudah di atas, ini hanya untuk kursor berkedip */
+    animation: blink-caret .75s step-end infinite;
 }
 
 
@@ -220,8 +226,8 @@ nav ul li a.active {
   border-radius: 30px;
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.3s ease, box-shadow 0.3s ease; /* Tambah transisi box-shadow */
-  box-shadow: 0 6px 15px var(--shadow-color); /* Perbaiki typo dari 151px menjadi 15px */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 15px var(--shadow-color);
 }
 .btn:hover {
   background: linear-gradient(
@@ -248,9 +254,18 @@ nav ul li a.active {
 .home-image img {
   width: 100%;
   max-width: 450px;
-  border-radius: 20px;
-  box-shadow: 0 8px 30px var(--shadow-color); /* Tambah var(--shadow-color) */
+  border-radius: 50%; /* Membuat gambar menjadi bulat */
+  object-fit: cover; /* Memastikan gambar mengisi area bulat tanpa distorsi */
+  aspect-ratio: 1 / 1; /* Memastikan rasio aspek 1:1 agar lingkaran sempurna */
+  box-shadow: 0 8px 30px var(--shadow-color);
+  border: 4px solid var(--accent-color); /* Tambahkan bingkai */
+  transition: border-color var(--transition-speed), transform 0.3s ease;
 }
+/* Optional: Efek hover untuk gambar profil (misalnya, sedikit scale) */
+.home-image img:hover {
+    transform: scale(1.02);
+}
+
 /* Pastikan hanya ada satu @keyframes fadeInUp */
 @keyframes fadeInUp {
   0% {
@@ -274,7 +289,7 @@ nav ul li a.active {
   max-width: 900px;
   box-shadow: 0 4px 30px var(--shadow-color);
   color: var(--text-color);
-  transition: background var(--transition-speed), box-shadow var(--transition-speed); /* Tambah transisi */
+  transition: background var(--transition-speed), box-shadow var(--transition-speed);
 }
 .about-container h2 {
   font-size: 2.5rem;
@@ -300,7 +315,7 @@ nav ul li a.active {
   background: var(--background);
   color: var(--text-color);
   text-align: center;
-  transition: background var(--transition-speed); /* Tambah transisi */
+  transition: background var(--transition-speed);
 }
 .projects h2 {
   font-size: 2.5rem;
@@ -324,7 +339,7 @@ nav ul li a.active {
   border-radius: 16px;
   backdrop-filter: blur(12px);
   box-shadow: 0 4px 20px var(--shadow-color);
-  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease; /* Tambah transisi */
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
 }
 .project-card:hover {
@@ -362,7 +377,7 @@ nav ul li a.active {
   text-align: center;
   background: var(--background);
   color: var(--text-color);
-  transition: background var(--transition-speed); /* Tambah transisi */
+  transition: background var(--transition-speed);
 }
 .contact h2 {
   font-size: 2.5rem;
@@ -387,7 +402,7 @@ nav ul li a.active {
   box-shadow: 0 4px 20px var(--shadow-color);
   max-width: 700px;
   margin: auto;
-  transition: background 0.3s ease, box-shadow 0.3s ease; /* Tambah transisi */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 .form-group {
   display: flex;
@@ -396,29 +411,29 @@ nav ul li a.active {
 }
 .form-group input {
   padding: 1rem;
-  border: 1px solid var(--border-color); /* Tambah border */
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   background: var(--background);
   color: var(--text-color);
   font-size: 1rem;
-  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Tambah transisi */
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 textarea {
   width: 100%;
   padding: 1rem;
   margin-top: 1rem;
-  border: 1px solid var(--border-color); /* Tambah border */
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   background: var(--background);
   color: var(--text-color);
   font-size: 1rem;
   resize: vertical;
-  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Tambah transisi */
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: 2px solid var(--accent-color);
-  border-color: var(--accent-color); /* Border berubah warna saat fokus */
+  border-color: var(--accent-color);
 }
 
 .contact-form .btn {
@@ -465,7 +480,7 @@ textarea {
     backdrop-filter: blur(12px);
     z-index: 1000;
   }
-  nav ul.active { /* Ganti 'open' menjadi 'active' agar konsisten dengan JS */
+  nav ul.active {
     transform: translateX(0);
   }
   nav ul li {
@@ -504,30 +519,30 @@ textarea {
   line-height: 1.6;
   margin: 0;
   padding: 2rem;
-  transition: background var(--transition-speed), color var(--transition-speed); /* Tambah transisi */
+  transition: background var(--transition-speed), color var(--transition-speed);
 }
 
 .project-detail-header {
   text-align: center;
-  padding: 2rem; /* Sesuaikan padding agar lebih fleksibel */
+  padding: 2rem;
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
   border-radius: 16px;
   box-shadow: 0 4px 20px var(--shadow-color);
   margin-bottom: 2rem;
-  transition: background 0.3s ease, box-shadow 0.3s ease; /* Tambah transisi */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 
   /* Penyesuaian untuk tombol kembali di header */
-  display: flex; /* Gunakan flexbox untuk menata elemen di dalam header */
-  flex-direction: column; /* Tata dalam kolom */
-  align-items: flex-start; /* Sejajarkan ke kiri */
-  text-align: left; /* Teks di header tetap sejajar kiri */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
 /* Pergeseran h1 agar ada jarak dari tombol kembali */
 .project-detail-header h1 {
-    margin-top: 1rem; /* Memberi jarak dari tombol kembali */
-    align-self: center; /* Pusatkan judul di header */
+    margin-top: 1rem;
+    align-self: center;
     font-size: 2.5rem;
     background: linear-gradient(
         45deg,
@@ -541,27 +556,27 @@ textarea {
 
 /* Gaya untuk tombol kembali */
 .back-button {
-    display: inline-flex; /* Menggunakan flexbox untuk ikon dan teks */
-    align-items: center; /* Memusatkan vertikal */
-    gap: 8px; /* Jarak antara panah dan teks */
-    padding: 8px 15px; /* Padding di sekitar tombol */
-    background-color: var(--glass-bg); /* Warna latar belakang dari tema Anda */
-    color: var(--text-color); /* Warna teks dari tema Anda */
-    text-decoration: none; /* Hilangkan garis bawah default */
-    border-radius: 8px; /* Sudut membulat */
-    border: 1px solid var(--border-color); /* Border tipis */
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease; /* Tambah transisi border-color */
-    font-size: 0.9em; /* Ukuran font sedikit lebih kecil */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    background-color: var(--glass-bg);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+    font-size: 0.9em;
     font-weight: 500;
-    align-self: flex-start; /* Pastikan tombol tetap di kiri */
-    margin-bottom: 10px; /* Jarak antara tombol dan judul (bisa disesuaikan) */
+    align-self: flex-start;
+    margin-bottom: 10px;
 }
 
 .back-button:hover {
-    background-color: var(--accent-color); /* Berubah warna saat hover */
-    color: white; /* Warna teks putih saat hover */
-    transform: translateY(-2px); /* Efek sedikit naik */
-    box-shadow: 0 4px 10px var(--shadow-color); /* Tambah shadow saat hover */
+    background-color: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px var(--shadow-color);
 }
 
 
@@ -572,7 +587,7 @@ textarea {
   box-shadow: 0 4px 20px var(--shadow-color);
   overflow: hidden;
   margin-bottom: 2rem;
-  transition: background 0.3s ease, box-shadow 0.3s ease; /* Tambah transisi */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-image-card img {
@@ -587,7 +602,7 @@ textarea {
   box-shadow: 0 4px 20px var(--shadow-color);
   padding: 2rem;
   margin-bottom: 2rem;
-  transition: background 0.3s ease, box-shadow 0.3s ease; /* Tambah transisi */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-info h2 {
@@ -613,7 +628,7 @@ textarea {
   box-shadow: 0 4px 20px var(--shadow-color);
   padding: 2rem;
   margin-bottom: 2rem;
-  transition: background 0.3s ease, box-shadow 0.3s ease; /* Tambah transisi */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .case-study-section h3 {
@@ -661,19 +676,19 @@ textarea {
   border-radius: 16px;
   box-shadow: 0 4px 20px var(--shadow-color);
   font-size: 0.9rem;
-  transition: background 0.3s ease, box-shadow 0.3s ease; /* Tambah transisi */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Media query untuk responsivitas tombol kembali di header */
 @media (max-width: 768px) {
     .project-detail-header {
-        padding: 1.5rem 1rem; /* Sesuaikan padding untuk mobile */
+        padding: 1.5rem 1rem;
     }
     .back-button {
         font-size: 0.85em;
         padding: 6px 12px;
     }
     .project-detail-header h1 {
-        font-size: 2rem; /* Sesuaikan ukuran judul */
+        font-size: 2rem;
     }
 }
