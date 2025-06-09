@@ -484,3 +484,131 @@ textarea {
     flex-wrap: wrap;
   }
 }
+
+/* Project Detail Page Styles (Card Layout) */
+
+.project-detail-page {
+  font-family: var(--font-family);
+  background: var(--background);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 2rem;
+}
+
+.project-detail-header {
+  text-align: center;
+  padding: 2rem 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  margin-bottom: 2rem;
+}
+
+.project-detail-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project-image-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.project-image-card img {
+  width: 100%;
+  display: block;
+}
+
+.project-info {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.project-info h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project-info p {
+  margin-bottom: 1rem;
+}
+
+.case-study-section {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.case-study-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.case-study-section p {
+  margin-bottom: 1rem;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.action-buttons a {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 8px;
+  color: white;
+  background-color: var(--accent-color);
+  transition: background-color 0.3s ease;
+}
+
+.action-buttons a:hover {
+  background-color: var(--color-primary);
+}
+
+.project-detail-footer {
+  text-align: center;
+  padding: 1rem 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  font-size: 0.9rem;
+}
