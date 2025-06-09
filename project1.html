@@ -5,11 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Commerce Website - Detail Proyek</title>
     <link rel="stylesheet" href="style.css">
-</head>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('selectedTheme'); // Mengambil tema yang tersimpan
+            if (savedTheme) {
+                document.body.setAttribute('data-theme', savedTheme); // Menerapkan tema ke body
+            } else {
+                // Jika tidak ada tema tersimpan, atur default (sesuai setting default Anda, biasanya 'light')
+                document.body.setAttribute('data-theme', 'light');
+            }
+        });
+    </script>
+    </head>
 <body>
     <header class="project-detail-header">
         <div class="container">
-            <a href="index.html" class="back-button">&larr; Kembali ke Portofolio</a>
+            <a href="index.html" class="back-button">&larr; Kembali</a>
             <h1>E-Commerce Website</h1>
         </div>
     </header>
