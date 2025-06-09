@@ -7,7 +7,19 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-</head>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('selectedTheme'); // Mengambil tema yang tersimpan
+            if (savedTheme) {
+                document.body.setAttribute('data-theme', savedTheme); // Menerapkan tema ke body
+            } else {
+                // Jika tidak ada tema tersimpan, atur default (sesuai setting default Anda, biasanya 'light')
+                document.body.setAttribute('data-theme', 'light');
+            }
+        });
+    </script>
+    </head>
 
 <body data-theme="light">
 
@@ -35,9 +47,9 @@
     <section class="home" id="home">
         <div class="home-content">
             <h1>Hi, I'm <span>Davanico</span></h1>
-            <h2 class="typing-text">Beginner in Web Development | Passionate About UI Design | Always Learning</h2>
+            <h2 class="typing-text" id="dynamic-text"></h2>
             <p>I'm currently learning to build complete web solutions from front-end to back-end. I focus on creating modern, responsive, and scalable applications while growing my skills in HTML, CSS, JavaScript, Node.js, and databases.
-             I'm passionate about writing clean code and exploring beautiful, user-friendly design.
+                I'm passionate about writing clean code and exploring beautiful, user-friendly design.
             </p>
             <div class="home--buttons">
                 <a href="#projects" class="btn"><i class="fa-solid fa-briefcase"></i> View Projects</a>
@@ -46,7 +58,7 @@
         </div>
 
         <div class="home-image">
-            <img src="images/person.png" alt="Developer-image">
+            <img src="assets/images/person.png" alt="Davanico's Profile Picture">
         </div>
     </section>
 
