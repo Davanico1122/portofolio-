@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Davanico's Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('selectedTheme'); // Mengambil tema yang tersimpan
+            const savedTheme = localStorage.getItem('selectedTheme');
             if (savedTheme) {
-                document.body.setAttribute('data-theme', savedTheme); // Menerapkan tema ke body
+                document.body.setAttribute('data-theme', savedTheme);
             } else {
-                // Jika tidak ada tema tersimpan, atur default (sesuai setting default Anda, biasanya 'light')
+                // Atur default ke 'light' jika belum ada preferensi
                 document.body.setAttribute('data-theme', 'light');
             }
         });
@@ -24,7 +24,7 @@
 <body data-theme="light">
 
     <nav>
-        <div class="logo" aria-label="Portfolio Logo"> MyPortfolio</div>
+        <div class="logo" aria-label="Portfolio Logo">MyPortfolio</div>
 
         <button class="hamburger" id="hamburgerBtn" aria-label="Toggle-Menu" aria-expanded="false"
             aria-controls="navbarMenu">
@@ -67,13 +67,12 @@
             <h2>About Me</h2>
             <p>
                 I'm <strong>Davanico</strong>, Hi! I'm an aspiring Full Stack Developer and UI Designer with a passion for creating modern, responsive, and user-friendly web applications.
-
+            </p>
+            <p>
                 My journey in web development began with curiosity, and since then, I've been learning and building with technologies like HTML, CSS, JavaScript, Node.js, Express, MongoDB, and React. I'm especially interested in how clean code and thoughtful design can come together to bring ideas to life.
-
             </p>
             <p>
                 I'm constantly improving through hands-on projects—whether it's building something from scratch, exploring the latest UI/UX trends, or contributing to open source. Every project is an opportunity to learn, grow, and push my skills further.
-
             </p>
             <p>
                 When I'm not coding, I enjoy diving into design inspiration, testing out new tools, and thinking about how to make digital experiences better. I'm still early in my journey, but I'm excited about where it's heading.
