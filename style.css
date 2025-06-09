@@ -179,28 +179,23 @@ nav ul li a.active {
   margin: 0.5rem 1.5rem;
   color: var(--accent-color);
   white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid var(--accent-color);
-  width: 0; /* Awalnya 0 untuk efek ketik */
+  overflow: hidden; /* Pertahankan ini agar teks yang belum diketik tidak terlihat */
+  border-right: 2px solid var(--accent-color); /* Kursor yang berkedip */
+  animation: blink-caret .75s step-end infinite; /* Aplikasikan animasi blink-caret */
+  /* Hapus atau komentari properti 'width: 0;' yang lama. JavaScript akan mengontrol lebar teks. */
+  /* width: 0; */
 }
-/* Anda dapat menghapus kelas .typing-text.active di CSS ini
-   jika Anda benar-benar mengontrol animasi sepenuhnya dari JS.
-   Namun, jika Anda ingin menggunakan CSS untuk kursor berkedip
-   atau transisi lebar, Anda bisa biarkan ini, tapi pastikan JS
-   menambahkan/menghapus kelas 'active' jika itu yang Anda inginkan.
-   Dengan JS typing effect yang kita buat, width diatur per karakter,
-   bukan lewat keyframes 'typing'. Keyframes 'blink-caret' masih bisa dipakai.
-*/
-/* Memperbaiki typing effect. Class 'active' tidak lagi diperlukan jika JS mengontrol penuh */
-/* Jika Anda ingin kursor berkedip tetap ada, biarkan @keyframes blink-caret dan
-   pastikan .typing-text memiliki border-right dan overflow: hidden */
+
+/* Hapus @keyframes typing jika ada, karena JS yang mengontrol pengetikan */
+/* @keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+} */
+
+/* @keyframes blink-caret ini sudah di atas, tidak perlu duplikat */
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: var(--accent-color); }
-}
-.typing-text { /* Modifikasi ini agar kursor berkedip secara otomatis */
-    /* Properti typing-text sudah di atas, ini hanya untuk kursor berkedip */
-    animation: blink-caret .75s step-end infinite;
 }
 
 
