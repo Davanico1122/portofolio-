@@ -7,7 +7,7 @@
 
   /* REVISI: Nilai rgba yang lebih transparan untuk efek glassmorphism yang lebih samar */
   --color-glass-light: rgba(255, 255, 255, 0.15); /* Untuk mode terang */
-  --color-glass-dark: rgba(0, 0, 0, 0.25);      /* Untuk mode gelap */
+  --color-glass-dark: rgba(0, 0, 0, 0.25); /* Untuk mode gelap */
 
   --color-text-light: #222;
   --color-text-dark: #ddd;
@@ -20,6 +20,17 @@
 
   --border-color-light: rgba(0, 0, 0, 0.05);
   --border-color-dark: rgba(255, 255, 255, 0.1);
+
+  /* --- TAMBAHAN: Variabel Warna untuk Animated Background --- */
+  --animated-bg-light-1: #ff9a9e; /* Pink Muda */
+  --animated-bg-light-2: #fad0c4; /* Oranye Muda */
+  --animated-bg-light-3: #c3b6f0; /* Ungu Muda */
+  --animated-bg-light-4: #a4c8e7; /* Biru Muda */
+
+  --animated-bg-dark-1: #0a0a0a; /* Warna awal untuk mode gelap (sangat gelap) */
+  --animated-bg-dark-2: #1a1a1a; /* Warna kedua untuk mode gelap */
+  --animated-bg-dark-3: #2a2a2a; /* Warna ketiga untuk mode gelap */
+  --animated-bg-dark-4: #3a3a3a; /* Warna keempat untuk mode gelap (sedikit lebih terang dari yang lain, opsional) */
 }
 
 /* Mengubah :root menjadi body untuk data-theme agar konsisten dengan JS */
@@ -30,6 +41,12 @@ body[data-theme="dark"] {
   --accent-color: var(--color-accent-dark);
   --shadow-color: var(--shadow-dark);
   --border-color: var(--border-color-dark);
+
+  /* Atur variabel warna animasi untuk tema gelap */
+  --current-animated-bg-1: var(--animated-bg-dark-1);
+  --current-animated-bg-2: var(--animated-bg-dark-2);
+  --current-animated-bg-3: var(--animated-bg-dark-3);
+  --current-animated-bg-4: var(--animated-bg-dark-4);
 }
 
 body[data-theme="light"] {
@@ -39,6 +56,12 @@ body[data-theme="light"] {
   --accent-color: var(--color-accent-light);
   --shadow-color: var(--shadow-light);
   --border-color: var(--border-color-light);
+
+  /* Atur variabel warna animasi untuk tema terang */
+  --current-animated-bg-1: var(--animated-bg-light-1);
+  --current-animated-bg-2: var(--animated-bg-light-2);
+  --current-animated-bg-3: var(--animated-bg-light-3);
+  --current-animated-bg-4: var(--animated-bg-light-4);
 }
 
 /* --- Base Styles --- */
@@ -53,7 +76,8 @@ body {
   /* REVISI: Background body diubah menjadi transparent agar animated-background terlihat */
   background: transparent; /* Sebelumnya: var(--background); */
   color: var(--text-color);
-  transition: color var(--transition-speed); /* Hapus transisi background dari body */
+  /* REVISI: Hanya transisi warna teks, background ditangani oleh .animated-background */
+  transition: color var(--transition-speed);
   /* Min-height 100vh agar background mengisi seluruh layar meskipun konten sedikit */
   min-height: 100vh;
   position: relative; /* Penting untuk konteks stacking jika ada elemen absolute/fixed lain */
@@ -61,40 +85,43 @@ body {
 
 /* --- Animated Background Layer --- */
 .animated-background {
-    position: fixed; /* Penting agar mengisi seluruh viewport */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Penting agar berada di belakang semua konten */
+  position: fixed; /* Penting agar mengisi seluruh viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Penting agar berada di belakang semua konten */
 
-    /* Properti background untuk animasi gradien */
-    background: linear-gradient(
-        45deg,
-        #ff9a9e, /* Warna awal 1: Pink Muda */
-        #fad0c4, /* Warna awal 2: Oranye Muda */
-        #c3b6f0, /* Warna akhir 1: Ungu Muda */
-        #a4c8e7  /* Warna akhir 2: Biru Muda */
-    );
-    background-size: 400% 400%; /* Ukuran background lebih besar untuk animasi gerakan */
-    animation: gradientShift 15s ease infinite; /* Animasi gradien */
+  /* Properti background untuk animasi gradien - sekarang menggunakan variabel! */
+  background: linear-gradient(
+    45deg,
+    var(--current-animated-bg-1), /* Gunakan variabel baru */
+    var(--current-animated-bg-2),
+    var(--current-animated-bg-3),
+    var(--current-animated-bg-4)
+  );
+  background-size: 400% 400%; /* Ukuran background lebih besar untuk animasi gerakan */
+  animation: gradientShift 15s ease infinite; /* Animasi gradien */
 
-    /* Opsional: sedikit buram pada background itu sendiri agar lebih "samar" sebelum diburamkan backdrop-filter */
-    /* Uncomment baris di bawah jika ingin background animasinya sendiri sudah sedikit buram */
-    /* filter: blur(3px); */
+  /* TAMBAHKAN: Transisi untuk perubahan warna background yang halus */
+  transition: background 0.5s ease;
+
+  /* Opsional: sedikit buram pada background itu sendiri agar lebih "samar" sebelum diburamkan backdrop-filter */
+  /* Uncomment baris di bawah jika ingin background animasinya sendiri sudah sedikit buram */
+  /* filter: blur(3px); */
 }
 
 /* Kunci animasi untuk menggeser gradien */
 @keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* ============== Header Section =============> */
@@ -299,7 +326,7 @@ nav ul li a.active {
   width: 100%; /* Gambar mengisi lebar container-nya */
   /* REVISI: Ukuran bingkai lebih kecil */
   max-width: 280px; /* Diubah dari 350px menjadi 280px */
-  height: 280px;   /* Diubah dari 350px menjadi 280px */
+  height: 280px; /* Diubah dari 350px menjadi 280px */
   /*--------------------------------------------------*/
 
   border-radius: 50%; /* Membuat gambar lingkaran */
@@ -364,8 +391,8 @@ nav ul li a.active {
   /* REVISI: Hapus background dari sini agar animated-background terlihat */
   /* background: var(--background); */
   color: var(--text-color);
-  text-align: center;
   transition: color var(--transition-speed); /* Hapus transisi background dari sini */
+  text-align: center;
 }
 .projects h2 {
   font-size: 2.5rem;
@@ -560,7 +587,7 @@ textarea {
   /* REVISI MEDIA QUERY UNTUK UKURAN GAMBAR PADA MOBILE */
   .home-image img {
     max-width: 200px; /* Diubah dari 250px menjadi 200px */
-    height: 200px;   /* Diubah dari 250px menjadi 200px */
+    height: 200px; /* Diubah dari 250px menjadi 200px */
     /* Pastikan object-fit dan border-radius tetap */
   }
   .home--buttons {
