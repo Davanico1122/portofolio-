@@ -297,8 +297,11 @@ nav ul li a.active {
 
 .home-image img {
   width: 100%; /* Gambar mengisi lebar container-nya */
-  max-width: 350px; /* REVISI: Batasi ukuran maksimum gambar untuk bingkai sedang */
-  height: 350px; /* REVISI: Tetapkan tinggi eksplisit agar lingkaran sempurna dan object-fit bekerja */
+  /* REVISI: Ukuran bingkai lebih kecil */
+  max-width: 280px; /* Diubah dari 350px menjadi 280px */
+  height: 280px;   /* Diubah dari 350px menjadi 280px */
+  /*--------------------------------------------------*/
+
   border-radius: 50%; /* Membuat gambar lingkaran */
   object-fit: cover; /* Penting: Memastikan gambar mengisi lingkaran tanpa distorsi */
   object-position: center; /* Memusatkan gambar di dalam bingkai */
@@ -556,8 +559,8 @@ textarea {
   }
   /* REVISI MEDIA QUERY UNTUK UKURAN GAMBAR PADA MOBILE */
   .home-image img {
-    max-width: 250px; /* Ukuran yang lebih kecil untuk mobile */
-    height: 250px; /* Sesuaikan tinggi juga */
+    max-width: 200px; /* Diubah dari 250px menjadi 200px */
+    height: 200px;   /* Diubah dari 250px menjadi 200px */
     /* Pastikan object-fit dan border-radius tetap */
   }
   .home--buttons {
