@@ -1,18 +1,16 @@
 // script.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleBtn = document.getElementById('themeToggle');
-    const themeIcon = themeToggleBtn.querySelector('i');
     const body = document.body;
 
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const navbarMenu = document.getElementById('navbarMenu');
-    const navLinks = document.querySelectorAll('#navbarMenu a');
-
-    // Mengambil elemen typing text menggunakan ID yang kita tambahkan di index.html
-    const dynamicTextElement = document.getElementById('dynamic-text');
-
     // --- Start of Theme Handling ---
+
+    const themeToggleBtn = document.getElementById('themeToggle');
+    // Pindahkan inisialisasi themeIcon ke dalam pengecekan themeToggleBtn
+    let themeIcon; 
+    if (themeToggleBtn) {
+        themeIcon = themeToggleBtn.querySelector('i');
+    }
 
     // Fungsi untuk mengatur tema dan memperbarui ikon
     const setTheme = (theme) => {
@@ -20,12 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('selectedTheme', theme);
 
         // Perbarui ikon berdasarkan tema yang baru
-        if (theme === 'dark') {
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        } else {
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
+        if (themeIcon) { // Pastikan themeIcon ditemukan sebelum memanipulasinya
+            if (theme === 'dark') {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
         }
     };
 
@@ -39,20 +39,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Toggle tema saat tombol diklik
-    themeToggleBtn.addEventListener('click', () => {
-        const currentTheme = body.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        setTheme(newTheme);
-    });
+    if (themeToggleBtn) { // Pastikan tombol ada sebelum menambahkan event listener
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        });
+    }
 
     // --- End of Theme Handling ---
 
 
     // --- Start of Hamburger Menu Handling ---
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navbarMenu = document.getElementById('navbarMenu');
 
     // Periksa apakah elemen hamburger dan navMenu ada sebelum menambahkan event listener
     if (hamburgerBtn && navbarMenu) {
         const hamburgerIcon = hamburgerBtn.querySelector('i');
+        const navLinks = document.querySelectorAll('#navbarMenu a'); // Inisialisasi di sini
 
         hamburgerBtn.addEventListener('click', () => {
             const expanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
@@ -60,12 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
             navbarMenu.classList.toggle('active'); // Menggunakan 'active' agar konsisten dengan CSS
 
             // Toggle ikon hamburger
-            if (navbarMenu.classList.contains('active')) {
-                hamburgerIcon.classList.remove('fa-bars');
-                hamburgerIcon.classList.add('fa-xmark'); // Ikon silang saat menu terbuka
-            } else {
-                hamburgerIcon.classList.remove('fa-xmark');
-                hamburgerIcon.classList.add('fa-bars'); // Ikon baris saat menu tertutup
+            if (hamburgerIcon) { // Pastikan ikon hamburger ditemukan
+                if (navbarMenu.classList.contains('active')) {
+                    hamburgerIcon.classList.remove('fa-bars');
+                    hamburgerIcon.classList.add('fa-xmark'); // Ikon silang saat menu terbuka
+                } else {
+                    hamburgerIcon.classList.remove('fa-xmark');
+                    hamburgerIcon.classList.add('fa-bars'); // Ikon baris saat menu tertutup
+                }
             }
         });
 
@@ -75,8 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (navbarMenu.classList.contains('active')) {
                     navbarMenu.classList.remove('active');
                     hamburgerBtn.setAttribute('aria-expanded', 'false');
-                    hamburgerIcon.classList.remove('fa-xmark'); // Pastikan ikon kembali ke baris
-                    hamburgerIcon.classList.add('fa-bars');
+                    if (hamburgerIcon) { // Pastikan ikon hamburger ditemukan
+                        hamburgerIcon.classList.remove('fa-xmark'); // Pastikan ikon kembali ke baris
+                        hamburgerIcon.classList.add('fa-bars');
+                    }
                 }
             });
         });
@@ -86,6 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Start of Typing Effect ---
+    const dynamicTextElement = document.getElementById('dynamic-text'); // Inisialisasi di sini
+
     // Pastikan elemen dengan ID 'dynamic-text' ada di index.html
     if (dynamicTextElement) {
         const phrases = [
@@ -137,4 +148,34 @@ document.addEventListener('DOMContentLoaded', () => {
         typeEffect();
     }
     // --- End of Typing Effect ---
+
+    // --- Start of Nav Link Active (Scroll Spy) ---
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav ul li a'); // Mendefinisikan ulang untuk scroll spy
+
+    function activateNavLink() {
+        const scrollY = window.pageYOffset;
+
+        sections.forEach(current => {
+            const sectionHeight = current.offsetHeight;
+            const sectionTop = current.offsetTop - 150; // Sesuaikan offset jika perlu
+
+            const sectionId = current.getAttribute('id');
+            const correspondingLink = document.querySelector('nav ul li a[href*=' + sectionId + ']');
+
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                // Hapus 'active' dari semua link, lalu tambahkan ke link yang sesuai
+                navLinks.forEach(link => link.classList.remove('active'));
+                if (correspondingLink) {
+                    correspondingLink.classList.add('active');
+                }
+            }
+        });
+    }
+
+    window.addEventListener('scroll', activateNavLink);
+    // Panggil sekali saat dimuat untuk mengatur link aktif di awal
+    activateNavLink();
+    // --- End of Nav Link Active (Scroll Spy) ---
+
 });
