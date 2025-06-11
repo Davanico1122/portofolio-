@@ -1,4 +1,4 @@
-hgn// script.js
+// script.js
 
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggleBtn = document.getElementById('themeToggle');
