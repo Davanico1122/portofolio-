@@ -15,7 +15,8 @@
   --shadow-dark: rgba(255, 255, 255, 0.1);
 
   /* Variabel tambahan untuk border di mode gelap agar tidak terlalu kontras */
-  --border-color: rgba(255, 255, 255, 0.1);
+  --border-color-light: rgba(0, 0, 0, 0.05); /* Border lebih terang untuk mode terang */
+  --border-color-dark: rgba(255, 255, 255, 0.1); /* Pastikan ini ada di dark mode */
 }
 
 /* Mengubah :root menjadi body untuk data-theme agar konsisten dengan JS */
@@ -25,7 +26,7 @@ body[data-theme="dark"] {
   --text-color: var(--color-text-dark);
   --accent-color: var(--color-accent-dark);
   --shadow-color: var(--shadow-dark);
-  --border-color: rgba(255, 255, 255, 0.1); /* Pastikan ini ada di dark mode */
+  --border-color: var(--border-color-dark); /* Menggunakan variabel baru */
 }
 
 body[data-theme="light"] {
@@ -34,7 +35,7 @@ body[data-theme="light"] {
   --text-color: var(--color-text-light);
   --accent-color: var(--color-accent-light);
   --shadow-color: var(--shadow-light);
-  --border-color: rgba(0, 0, 0, 0.05); /* Border lebih terang untuk mode terang */
+  --border-color: var(--border-color-light); /* Menggunakan variabel baru */
 }
 
 * {
@@ -181,23 +182,18 @@ nav ul li a.active {
   white-space: nowrap;
   overflow: hidden; /* Pertahankan ini agar teks yang belum diketik tidak terlihat */
   border-right: 2px solid var(--accent-color); /* Kursor yang berkedip */
-  animation: blink-caret .75s step-end infinite; /* Aplikasikan animasi blink-caret */
-  /* Hapus atau komentari properti 'width: 0;' yang lama. JavaScript akan mengontrol lebar teks. */
-  /* width: 0; */
+  animation: blink-caret 0.75s step-end infinite; /* Aplikasikan animasi blink-caret */
 }
 
-/* Hapus @keyframes typing jika ada, karena JS yang mengontrol pengetikan */
-/* @keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-} */
-
-/* @keyframes blink-caret ini sudah di atas, tidak perlu duplikat */
 @keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: var(--accent-color); }
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--accent-color);
+  }
 }
-
 
 .home-content p {
   font-size: 1rem;
@@ -258,7 +254,7 @@ nav ul li a.active {
 }
 /* Optional: Efek hover untuk gambar profil (misalnya, sedikit scale) */
 .home-image img:hover {
-    transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 /* Pastikan hanya ada satu @keyframes fadeInUp */
@@ -536,59 +532,82 @@ textarea {
 
 /* Pergeseran h1 agar ada jarak dari tombol kembali */
 .project-detail-header h1 {
-    margin-top: 1rem;
-    align-self: center;
-    font-size: 2.5rem;
-    background: linear-gradient(
-        45deg,
-        var(--color-primary),
-        var(--color-secondary)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  margin-top: 1rem;
+  align-self: center;
+  font-size: 2.5rem;
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-
 
 /* Gaya untuk tombol kembali */
 .back-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 15px;
-    background-color: var(--glass-bg);
-    color: var(--text-color);
-    text-decoration: none;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
-    font-size: 0.9em;
-    font-weight: 500;
-    align-self: flex-start;
-    margin-bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  background-color: var(--glass-bg);
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease,
+    border-color 0.3s ease;
+  font-size: 0.9em;
+  font-weight: 500;
+  align-self: flex-start;
+  margin-bottom: 10px;
 }
 
 .back-button:hover {
-    background-color: var(--accent-color);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--shadow-color);
+  background-color: var(--accent-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px var(--shadow-color);
 }
 
-
+/* MODIFIKASI DIMULAI DI SINI UNTUK GAMBAR */
 .project-image-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  box-shadow: 0 4px 20px var(--shadow-color);
+  /* Hapus beberapa properti di sini karena sudah ada di .case-study-section */
+  /* background: var(--glass-bg); */
+  /* backdrop-filter: blur(10px); */
+  /* border-radius: 16px; */
+  /* box-shadow: 0 4px 20px var(--shadow-color); */
   overflow: hidden;
   margin-bottom: 2rem;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  /* transition: background 0.3s ease, box-shadow 0.3s ease; */
+
+  /* Penyesuaian tambahan untuk bingkai dan penempatan gambar */
+  display: flex; /* Untuk memusatkan gambar */
+  justify-content: center; /* Memusatkan horizontal */
+  align-items: center; /* Memusatkan vertikal */
+  padding: 1.5rem; /* Padding di dalam kartu gambar */
+  border: 1px solid var(--border-color); /* Bingkai tipis untuk kartu keseluruhan */
+  background: var(--glass-bg); /* Menggunakan variabel glass-bg */
+  backdrop-filter: blur(10px); /* Efek blur */
+  border-radius: 16px; /* Sudut membulat */
+  box-shadow: 0 4px 20px var(--shadow-color); /* Bayangan */
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Transisi untuk tema */
 }
 
 .project-image-card img {
-  width: 100%;
-  display: block;
+  max-width: 80%; /* Mengatur lebar maksimum gambar menjadi 80% dari parent-nya */
+  height: auto; /* Memastikan rasio aspek gambar tetap terjaga */
+  display: block; /* Menghilangkan spasi ekstra di bawah gambar */
+  border-radius: 8px; /* Sudut membulat untuk gambar itu sendiri */
+  border: 2px solid var(--accent-color); /* Bingkai tebal menggunakan warna aksen */
+  box-shadow: 0 2px 8px var(--shadow-color); /* Bayangan lembut untuk gambar */
+  transition: border-color 0.3s ease, transform 0.3s ease; /* Transisi untuk tema dan hover */
 }
+
+.project-image-card img:hover {
+  transform: scale(1.02); /* Efek zoom sedikit saat hover */
+}
+/* AKHIR MODIFIKASI UNTUK GAMBAR */
 
 .project-info {
   background: var(--glass-bg);
@@ -676,14 +695,32 @@ textarea {
 
 /* Media query untuk responsivitas tombol kembali di header */
 @media (max-width: 768px) {
-    .project-detail-header {
-        padding: 1.5rem 1rem;
-    }
-    .back-button {
-        font-size: 0.85em;
-        padding: 6px 12px;
-    }
-    .project-detail-header h1 {
-        font-size: 2rem;
-    }
+  .project-detail-header {
+    padding: 1.5rem 1rem;
+  }
+  .back-button {
+    font-size: 0.85em;
+    padding: 6px 12px;
+  }
+  .project-detail-header h1 {
+    font-size: 2rem;
+  }
+
+  /* Penyesuaian gambar pada ukuran layar kecil */
+  .project-image-card img {
+    max-width: 90%; /* Sedikit lebih besar untuk layar kecil */
+  }
+}
+
+/* Responsivitas umum untuk container */
+.container {
+  max-width: 1000px; /* Atur lebar maksimum container utama */
+  margin: 0 auto; /* Pusatkan container */
+  padding: 0 1.5rem; /* Padding horizontal untuk responsivitas */
+}
+
+/* Menyesuaikan margin untuk bagian utama agar tidak terlalu dekat dengan tepi */
+.project-detail-page > .container {
+  padding-top: 2rem; /* Memberikan ruang di atas konten utama */
+  padding-bottom: 2rem; /* Memberikan ruang di bawah konten utama */
 }
