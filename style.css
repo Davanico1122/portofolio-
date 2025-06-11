@@ -3,8 +3,12 @@
   --color-secondary: #2575fc;
   --color-bg-light: #f0f0f3;
   --color-bg-dark: #121212;
-  --color-glass-light: rgba(255, 255, 255, 0.25);
-  --color-glass-dark: rgba(0, 0, 0, 0.35);
+  
+  /* --- REVISI DI SINI UNTUK EFEK LEBIH SAMAR --- */
+  --color-glass-light: rgba(255, 255, 255, 0.15); /* DARI 0.25 MENJADI 0.15 (lebih transparan) */
+  --color-glass-dark: rgba(0, 0, 0, 0.25);      /* DARI 0.35 MENJADI 0.25 (lebih transparan) */
+  /* --- AKHIR REVISI --- */
+
   --color-text-light: #222;
   --color-text-dark: #ddd;
   --color-accent-light: #2575fc;
@@ -61,7 +65,9 @@ nav {
   align-items: center;
   padding: 1rem 3rem;
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
+  /* --- REVISI DI SINI UNTUK BLUR LEBIH SAMAR --- */
+  backdrop-filter: blur(8px); /* DARI 12px MENJADI 8px */
+  /* --- AKHIR REVISI --- */
   box-shadow: 0 4px 30px var(--shadow-color);
   z-index: 1000;
   border-radius: 0 0 20px 20px;
@@ -274,7 +280,9 @@ nav ul li a.active {
 .about {
   padding: 5rem 3rem;
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
+  /* --- REVISI DI SINI UNTUK BLUR LEBIH SAMAR --- */
+  backdrop-filter: blur(8px); /* DARI 12px MENJADI 8px */
+  /* --- AKHIR REVISI --- */
   border-radius: 20px;
   margin: 6rem auto;
   max-width: 900px;
@@ -328,7 +336,9 @@ nav ul li a.active {
   background: var(--glass-bg);
   padding: 2rem;
   border-radius: 16px;
-  backdrop-filter: blur(12px);
+  /* --- REVISI DI SINI UNTUK BLUR LEBIH SAMAR --- */
+  backdrop-filter: blur(8px); /* DARI 12px MENJADI 8px */
+  /* --- AKHIR REVISI --- */
   box-shadow: 0 4px 20px var(--shadow-color);
   transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
@@ -389,7 +399,9 @@ nav ul li a.active {
   background: var(--glass-bg);
   padding: 2rem;
   border-radius: 16px;
-  backdrop-filter: blur(10px);
+  /* --- REVISI DI SINI UNTUK BLUR LEBIH SAMAR --- */
+  backdrop-filter: blur(8px); /* DARI 10px MENJADI 8px */
+  /* --- AKHIR REVISI --- */
   box-shadow: 0 4px 20px var(--shadow-color);
   max-width: 700px;
   margin: auto;
@@ -468,7 +480,9 @@ textarea {
     padding-top: 2rem;
     box-shadow: -4px 0 30px var(--shadow-color);
     border-radius: 20px 0 0 20px;
-    backdrop-filter: blur(12px);
+    /* --- REVISI DI SINI UNTUK BLUR LEBIH SAMAR (MENU MOBILE) --- */
+    backdrop-filter: blur(8px); /* DARI 12px MENJADI 8px */
+    /* --- AKHIR REVISI --- */
     z-index: 1000;
   }
   nav ul.active {
@@ -517,7 +531,9 @@ textarea {
   text-align: center;
   padding: 2rem;
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  /* --- REVISI DI SINI UNTUK BLUR LEBIH SAMAR --- */
+  backdrop-filter: blur(8px); /* DARI 10px MENJADI 8px */
+  /* --- AKHIR REVISI --- */
   border-radius: 16px;
   box-shadow: 0 4px 20px var(--shadow-color);
   margin-bottom: 2rem;
@@ -572,23 +588,17 @@ textarea {
 
 /* MODIFIKASI DIMULAI DI SINI UNTUK GAMBAR */
 .project-image-card {
-  /* Hapus beberapa properti di sini karena sudah ada di .case-study-section */
-  /* background: var(--glass-bg); */
-  /* backdrop-filter: blur(10px); */
-  /* border-radius: 16px; */
-  /* box-shadow: 0 4px 20px var(--shadow-color); */
   overflow: hidden;
   margin-bottom: 2rem;
-  /* transition: background 0.3s ease, box-shadow 0.3s ease; */
 
-  /* Penyesuaian tambahan untuk bingkai dan penempatan gambar */
   display: flex; /* Untuk memusatkan gambar */
   justify-content: center; /* Memusatkan horizontal */
   align-items: center; /* Memusatkan vertikal */
   padding: 1.5rem; /* Padding di dalam kartu gambar */
-  border: 1px solid var(--border-color); /* Bingkai tipis untuk kartu keseluruhan */
   background: var(--glass-bg); /* Menggunakan variabel glass-bg */
-  backdrop-filter: blur(10px); /* Efek blur */
+  /* --- REVISI DI SINI UNTUK BLUR LEBIH SAMAR --- */
+  backdrop-filter: blur(8px); /* DARI 10px MENJADI 8px */
+  /* --- AKHIR REVISI --- */
   border-radius: 16px; /* Sudut membulat */
   box-shadow: 0 4px 20px var(--shadow-color); /* Bayangan */
   transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Transisi untuk tema */
@@ -611,7 +621,9 @@ textarea {
 
 .project-info {
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  /* --- REVISI DI SINI UNTUK BLUR LEBIH SAMAR --- */
+  backdrop-filter: blur(8px); /* DARI 10px MENJADI 8px */
+  /* --- AKHIR REVISI --- */
   border-radius: 16px;
   box-shadow: 0 4px 20px var(--shadow-color);
   padding: 2rem;
@@ -637,7 +649,9 @@ textarea {
 
 .case-study-section {
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  /* --- REVISI DI SINI UNTUK BLUR LEBIH SAMAR --- */
+  backdrop-filter: blur(8px); /* DARI 10px MENJADI 8px */
+  /* --- AKHIR REVISI --- */
   border-radius: 16px;
   box-shadow: 0 4px 20px var(--shadow-color);
   padding: 2rem;
@@ -686,7 +700,9 @@ textarea {
   text-align: center;
   padding: 1rem 0;
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  /* --- REVISI DI SINI UNTUK BLUR LEBIH SAMAR --- */
+  backdrop-filter: blur(8px); /* DARI 10px MENJADI 8px */
+  /* --- AKHIR REVISI --- */
   border-radius: 16px;
   box-shadow: 0 4px 20px var(--shadow-color);
   font-size: 0.9rem;
